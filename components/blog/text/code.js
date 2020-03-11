@@ -10,7 +10,7 @@ export const Code = ({ children, syntax }) => (
           overflow: auto;
           padding: 1.5rem;
           margin: 40px 0;
-          border-radius: 5px;
+          border-radius: 3px;
           -webkit-overflow-scrolling: touch;
         }
 

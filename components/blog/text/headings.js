@@ -1,11 +1,11 @@
-const H1 = ({ children, ...props }) => (
-  <h1 {...props}>
+const H1 = ({ children }) => (
+  <h1 className="fw6">
     {children}
 
     <style jsx>{`
-      font-size: 1.8rem;
-      font-weight: 400;
+      text-align: center;
       margin-top: 0;
+      font-size: 2rem;
     `}</style>
   </h1>
 );
