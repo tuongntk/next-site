@@ -27,6 +27,10 @@ const nextConfig = {
         {
           source: '/docs{/}?',
           destination: '/docs/getting-started'
+        },
+        {
+          source: '/docs/tag/:tag{/}?',
+          destination: '/docs/tag/:tag/getting-started'
         }
       ];
     },
