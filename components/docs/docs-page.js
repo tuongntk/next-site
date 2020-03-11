@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { getSlug, removeFromLast } from '../../lib/docs/utils';
 import { GITHUB_URL, REPO_NAME } from '../../lib/github/constants';
 import getRouteContext from '../../lib/get-route-context';
-import Notification from './notification';
 import FooterFeedback from '../footer-feedback';
 import Button from '../button';
 import ArrowIcon from '../arrow-icon';
@@ -24,11 +23,6 @@ function DocsPage({ route, routes, html }) {
 
   return (
     <div className="docs">
-      <Notification>
-        <strong>Note:</strong> You are viewing the new Next.js documentation. The old docs are still
-        available <a href="/docs/old">here</a>.
-      </Notification>
-
       {/* eslint-disable-next-line */}
       <div dangerouslySetInnerHTML={{ __html: html }} />
 
