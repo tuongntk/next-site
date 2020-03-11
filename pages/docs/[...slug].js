@@ -80,9 +80,8 @@ const Docs = ({ routes, route, data, html }) => {
       // by the first page of the new docs (/docs/getting-started)
       if (!hashMap.excluded.includes(hash)) {
         const to = hashMap.redirects[hash];
-        // Redirect the user to the section in the new docs that corresponds to the hash,
-        // or to the old docs if a redirect for that hash is not set
-        router.push(`/docs${to || `/old#${hash}`}`);
+        // Redirect the user to the section in the new docs that corresponds to the hash
+        if (to) router.push(`/docs${to}`);
       }
     }
   }, [asPath]);
