@@ -347,7 +347,7 @@ const mapping = {
   },
   worldpopulationreview: {
     title: 'World Population Review',
-    link: 'http://worldpopulationreview.com',
+    link: 'https://worldpopulationreview.com',
     src: '/static/images/showcases/worldpopulationreview.jpg',
     srcFallback: true,
     alexa: 6881,
@@ -555,7 +555,7 @@ const mapping = {
   },
   'boosted-boards': {
     title: 'Boosted',
-    link: 'http://boostedboards.com',
+    link: 'https://boostedboards.com',
     src: '/static/images/showcases/boosted.jpg',
     srcFallback: true,
     alexa: 40796,
@@ -634,7 +634,7 @@ const mapping = {
   },
   zeit: {
     title: 'ZEIT',
-    link: 'https://zeit.co',
+    link: 'https://zeit.co?utm_source=next-site&utm_medium=showcase&utm_campaign=next-website',
     src: '/static/images/showcases/showcases-09.jpg',
     srcFallback: true,
     alexa: 34585,
