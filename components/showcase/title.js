@@ -33,7 +33,7 @@ export default ({ height }) => {
           description={
             <span>
               Meet hundreds of beautiful websites <br className="display-mobile" />
-              powered by ZEIT's Next.js
+              built with Next.js by ZEIT
             </span>
           }
         />
