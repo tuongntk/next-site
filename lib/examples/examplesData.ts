@@ -195,7 +195,8 @@ export const getExampleMarkdown = async (data: ExamplesDataItem): Promise<string
   if (data.local) {
     return readFile(path.join(process.cwd(), `examples/${data.local}.md`), 'utf8');
   }
-  return Promise.resolve('remote');
+  // TODO: Fetch from GitHub after updating README.md over there
+  return readFile(path.join(process.cwd(), `examples/${data.github}.md`), 'utf8');
 };
 
 function getAllPaths(items: SidebarItem[]): string[] {
