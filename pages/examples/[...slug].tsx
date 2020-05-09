@@ -121,7 +121,6 @@ const ExamplesSlug: React.FC<Props> = ({ slug, data, html }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  console.log(examplePaths);
   return Promise.resolve({
     paths: examplePaths,
     fallback: false

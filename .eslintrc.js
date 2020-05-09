@@ -45,7 +45,7 @@ module.exports = {
         'prettier/@typescript-eslint',
         'prettier/react'
       ],
-      rules
+      rules: { ...rules, '@typescript-eslint/no-explicit-any': 0 }
     }
   ]
 };
