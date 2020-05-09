@@ -1,3 +1,6 @@
+import { readFile } from '@lib/fs-utils';
+import path from 'path';
+
 type SidebarItem =
   | {
       title: string;
@@ -137,13 +140,29 @@ export const sidebarData: SidebarItem[] = [
   // }
 ];
 
-export const examplesData = {
+export type EmojiToSvg = {
+  [key: string]: string | undefined;
+};
+
+export type ExamplesDataItem = {
+  title: string;
+  local?: string;
+  category?: string;
+  github?: string;
+  description?: string;
+};
+
+export const examplesData: {
+  [key: string]: ExamplesDataItem | undefined;
+} = {
   introduction: {
-    title: 'Introduction'
+    title: 'Introduction',
+    local: 'introduction'
   },
   'headless-cms/introduction': {
     title: 'Introduction',
-    category: 'Category'
+    category: 'Category',
+    local: 'headless-cms'
   },
   'headless-cms/contentful': {
     title: 'Build a Next.js Blog with Contentful',
@@ -172,13 +191,20 @@ export const examplesData = {
   }
 };
 
+export const getExampleMarkdown = async (data: ExamplesDataItem): Promise<string> => {
+  if (data.local) {
+    return readFile(path.join(process.cwd(), `examples/${data.local}.md`), 'utf8');
+  }
+  return Promise.resolve('remote');
+};
+
 function getAllPaths(items: SidebarItem[]): string[] {
   const result: string[] = [];
   items.forEach(item => {
     if ('routes' in item) {
       result.push(...getAllPaths(item.routes));
     } else {
-      result.push(item.path);
+      result.push(`/examples/${item.path}`);
     }
   });
   return result;
