@@ -205,7 +205,7 @@ export default function DocsLayout({ children }) {
         .docs li {
           margin-bottom: 0.625rem;
         }
-        ul :global(li:before) {
+        .docs ul li:before {
           content: '-';
           color: #999999;
           position: absolute;
