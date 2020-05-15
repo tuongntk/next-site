@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import cn from 'classnames';
 import NavLink from './nav-link';
 
-export default function Post({ isMobile, route, level = 1, onClick, ...props }) {
+export default function Post({ isMobile, route, level = 1, ...props }) {
   const selectedRef = useRef();
   const ref = route.selected ? selectedRef : null;
 
@@ -23,7 +23,6 @@ export default function Post({ isMobile, route, level = 1, onClick, ...props }) 
         scrollSelectedIntoView={props.scrollSelectedIntoView}
         categorySelected={props.categorySelected}
         level={level}
-        onClick={onClick}
       />
       <style jsx>{`
         .link {

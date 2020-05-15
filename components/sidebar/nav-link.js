@@ -2,22 +2,24 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
 
-function NavLink({ route: { href, pathname, title, selected }, onClick }) {
+function NavLink({ route: { href, pathname, title, selected } }) {
   const router = useRouter();
   const onlyHashChange = pathname === router.pathname;
 
   return (
     <div className={cn('nav-link', { selected })}>
-      {// NOTE: use just anchor element for triggering `hashchange` event
-      onlyHashChange ? (
-        <a className={selected ? 'selected' : ''} href={pathname}>
-          {title}
-        </a>
-      ) : (
-        <Link href={href} as={pathname}>
-          <a onClick={onClick}>{title}</a>
-        </Link>
-      )}
+      {
+        // NOTE: use just anchor element for triggering `hashchange` event
+        onlyHashChange ? (
+          <a className={selected ? 'selected' : ''} href={pathname}>
+            {title}
+          </a>
+        ) : (
+          <Link href={href} as={pathname}>
+            <a>{title}</a>
+          </Link>
+        )
+      }
       <style jsx>{`
         div.selected {
           box-sizing: border-box;
