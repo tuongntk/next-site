@@ -13,6 +13,20 @@ export default function Container({
   mobileStyle,
   divider,
   ...props
+}: {
+  center?: boolean;
+  vCenter?: boolean;
+  dark?: boolean;
+  gray?: boolean;
+  wide?: boolean;
+  small?: boolean;
+  padding?: boolean;
+  overflow?: boolean;
+  minHeight?: number;
+  dotBackground?: boolean;
+  children: React.ReactNode;
+  mobileStyle?: string;
+  divider?: boolean;
 }) {
   return (
     <div {...props}>
