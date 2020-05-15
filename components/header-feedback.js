@@ -106,8 +106,9 @@ class HeaderFeedback extends Component {
           note: value,
           emotion: getEmoji(this.state.emoji),
           label: this.context?.label,
-          ua: `${this.props.uaPrefix || ''} + ${navigator.userAgent} (${navigator.language ||
-            'unknown language'})`
+          ua: `${this.props.uaPrefix || ''} + ${navigator.userAgent} (${
+            navigator.language || 'unknown language'
+          })`
         })
       })
         .then(() => {
@@ -705,6 +706,7 @@ const Emoji = memo(({ code }) => (
     height={code === 'f600' || code === 'f62d' || code === 'f615' ? 18.5 : 16}
     src={`https://assets.vercel.com/twemoji/1${code}.svg`}
     alt="emoji"
+    loading="lazy"
     style={{
       transform: code === 'f600' || code === 'f615' ? 'translateY(0.5px)' : 'none'
     }}

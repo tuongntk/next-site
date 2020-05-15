@@ -16,8 +16,7 @@
     "jsx": "preserve",
     "paths": {
       "@components/*": ["components/*"],
-      "@lib/*": ["lib/*"],
-      "@pages/*": ["pages/*"]
+      "@lib/*": ["lib/*"]
     }
   },
   "exclude": ["node_modules"],
