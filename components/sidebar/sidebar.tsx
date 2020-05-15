@@ -2,7 +2,15 @@ import { useState } from 'react';
 import cn from 'classnames';
 import Search from '../search';
 
-export default function Sidebar({ active, children, fixed }) {
+export default function Sidebar({
+  active,
+  children,
+  fixed
+}: {
+  active?: boolean;
+  children: React.ReactNode;
+  fixed?: boolean;
+}) {
   const [searching, setSearching] = useState(false);
 
   return (
