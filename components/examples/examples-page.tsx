@@ -2,7 +2,11 @@ import { memo } from 'react';
 import FooterFeedback from '../footer-feedback';
 import DocsLayout from '../docs/docs-layout';
 
-function ExamplesPage({ html }) {
+type Props = {
+  html: string;
+};
+
+function ExamplesPage({ html }: Props) {
   return (
     <DocsLayout>
       {/* eslint-disable-next-line */}
