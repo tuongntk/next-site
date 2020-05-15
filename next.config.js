@@ -113,7 +113,6 @@ const nextConfig = {
   target: 'experimental-serverless-trace', // Not required for Now, but used by GitHub Actions
   pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx'],
   experimental: {
-    jsconfigPaths: true,
     modern: true,
     rewrites() {
       return [
