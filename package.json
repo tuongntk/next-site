@@ -63,6 +63,7 @@
     "unist-util-visit": "2.0.0"
   },
   "devDependencies": {
+    "@types/body-scroll-lock": "2.6.1",
     "@types/classnames": "2.2.10",
     "@types/node": "13.13.5",
     "@types/node-fetch": "2.5.7",
