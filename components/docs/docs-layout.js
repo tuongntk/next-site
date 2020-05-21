@@ -27,12 +27,15 @@ export default function DocsLayout({ children }) {
         .docs h1 {
           font-size: 3rem;
           font-weight: 700;
+          line-height: 1.35;
         }
         .docs h2 {
           font-size: 2rem;
+          line-height: 1.5;
         }
         .docs h3 {
           font-size: 1.5rem;
+          line-height: 1.6;
         }
         .docs h4 {
           font-size: 1.2rem;
