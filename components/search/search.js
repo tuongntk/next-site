@@ -5,9 +5,9 @@ import AutoComplete from './auto-complete';
 
 const searchClient = new AlgoliaClient();
 
-function Search(props) {
+function Search({ indexName, ...props }) {
   return (
-    <InstantSearch indexName="nextjs_docs" searchClient={searchClient}>
+    <InstantSearch indexName={indexName} searchClient={searchClient}>
       <Configure hitsPerPage={8} />
       <AutoComplete {...props} />
     </InstantSearch>

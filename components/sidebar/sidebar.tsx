@@ -5,23 +5,28 @@ import Search from '../search';
 export default function Sidebar({
   active,
   children,
-  fixed
+  fixed,
+  searchIndexName
 }: {
   active?: boolean;
   children: React.ReactNode;
   fixed?: boolean;
+  searchIndexName?: string;
 }) {
   const [searching, setSearching] = useState(false);
 
   return (
     <aside className={cn('sidebar', { active, fixed, searching })}>
-      <div className="sidebar-search">
-        <Search
-          id="desktop-search"
-          onSearchStart={() => setSearching(true)}
-          onSearchClear={() => setSearching(false)}
-        />
-      </div>
+      {searchIndexName && (
+        <div className="sidebar-search">
+          <Search
+            indexName={searchIndexName}
+            id="desktop-search"
+            onSearchStart={() => setSearching(true)}
+            onSearchClear={() => setSearching(false)}
+          />
+        </div>
+      )}
       <div className="sidebar-content">{children}</div>
       <style jsx>{`
         .sidebar {

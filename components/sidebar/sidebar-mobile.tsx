@@ -5,16 +5,26 @@ import Container from '../container';
 import ArrowRightSidebar from '../icons/arrow-right-sidebar';
 import Search from '../search';
 
-export default function SidebarMobile({ children }) {
+export default function SidebarMobile({
+  searchIndexName,
+  children
+}: {
+  searchIndexName?: string;
+  children: React.ReactNode;
+}) {
   const [opened, setOpen] = useState(false);
-  const menuRef = useRef();
-  const searchRef = useRef();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<Element>(null);
   const openMenu = () => {
-    disableBodyScroll(menuRef.current);
+    if (menuRef.current) {
+      disableBodyScroll(menuRef.current);
+    }
     setOpen(true);
   };
   const closeMenu = () => {
-    enableBodyScroll(menuRef.current);
+    if (menuRef.current) {
+      enableBodyScroll(menuRef.current);
+    }
     setOpen(false);
   };
   const toggleOpen = () => {
@@ -24,11 +34,15 @@ export default function SidebarMobile({ children }) {
   // In the following events, only do updates, don't use local states that aren't shared
   // with the Search component, because they won't be updated once the event happens.
   const onSearchStart = () => {
-    disableBodyScroll(searchRef.current);
+    if (searchRef.current) {
+      disableBodyScroll(searchRef.current);
+    }
     closeMenu();
   };
   const onSearchClear = () => {
-    enableBodyScroll(searchRef.current);
+    if (searchRef.current) {
+      enableBodyScroll(searchRef.current);
+    }
   };
   const onRouteChange = () => {
     closeMenu();
@@ -36,16 +50,19 @@ export default function SidebarMobile({ children }) {
 
   return (
     <Container>
-      <div className="sidebar-search">
-        <Search
-          id="mobile-search"
-          isMobile
-          containerRef={searchRef}
-          onSearchStart={onSearchStart}
-          onSearchClear={onSearchClear}
-          onRouteChange={onRouteChange}
-        />
-      </div>
+      {searchIndexName && (
+        <div className="sidebar-search">
+          <Search
+            id="mobile-search"
+            indexName={searchIndexName}
+            isMobile
+            containerRef={searchRef}
+            onSearchStart={onSearchStart}
+            onSearchClear={onSearchClear}
+            onRouteChange={onRouteChange}
+          />
+        </div>
+      )}
       <label htmlFor="dropdown-input" className={cn('dropdown-toggle', { opened })}>
         <input id="dropdown-input" type="checkbox" checked={opened} onChange={toggleOpen} />
         <div className="docs-select">

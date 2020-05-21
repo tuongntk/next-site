@@ -106,13 +106,13 @@ const Docs = ({ routes, route: _route, data, html }) => {
         {route ? (
           <PageContent>
             <Sticky shadow>
-              <SidebarMobile>
+              <SidebarMobile searchIndexName="nextjs_docs">
                 <SidebarRoutes isMobile routes={routes} />
               </SidebarMobile>
             </Sticky>
             <Container>
               <div className="content">
-                <Sidebar fixed>
+                <Sidebar fixed searchIndexName="nextjs_docs">
                   <SidebarRoutes routes={routes} />
                 </Sidebar>
                 <DocsPage route={route} html={html} prevRoute={prevRoute} nextRoute={nextRoute} />
