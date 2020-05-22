@@ -64,7 +64,7 @@ function SidebarRoutes({
         const route = {
           href: '/examples/[...slug]',
           slug: sidebarItem.slug,
-          title: (examplesData[sidebarItem.slug] || {}).title,
+          title: (examplesData[sidebarItem.slug] || {}).sidebarLabel,
           pathname: `/examples/${sidebarItem.slug}`,
           selected
         };
@@ -83,10 +83,11 @@ type Props = {
 
 const ExamplesSlug: React.FC<Props> = ({ pageSlug, data, html }) => {
   const isMobile = useIsMobile();
+  const titleTag = data.topPage ? data.title : `${data.title} | Next.js Examples`;
 
   return (
     <FeedbackContext.Provider value={{ label: 'next-examples' }}>
-      <Page title={data.title} description={false} sticky={!isMobile} isOldDocs={false}>
+      <Page title={titleTag} description={false} sticky={!isMobile} isOldDocs={false}>
         <PageContent>
           <Sticky shadow offset={null}>
             <SidebarMobile>
@@ -98,7 +99,7 @@ const ExamplesSlug: React.FC<Props> = ({ pageSlug, data, html }) => {
               <Sidebar fixed>
                 <SidebarRoutes pageSlug={pageSlug} routes={sidebarData} />
               </Sidebar>
-              <ExamplesPage html={html} />
+              <ExamplesPage title={data.title} html={html} />
             </div>
             <style jsx>{`
               .content {

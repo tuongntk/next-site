@@ -1,65 +1,79 @@
 export type ExamplesDataItem = {
+  sidebarLabel: string;
   title: string;
   local?: string;
   category?: string;
   github?: string;
   description?: string;
+  topPage?: boolean;
 };
 
 const examplesData: {
   [key: string]: ExamplesDataItem | undefined;
 } = {
   introduction: {
-    title: 'Introduction',
+    sidebarLabel: 'Introduction',
+    topPage: true,
+    title: 'Next.js Examples',
     local: 'introduction'
   },
   'headless-cms/introduction': {
-    title: 'Introduction',
+    sidebarLabel: 'Introduction',
+    title: 'Headless CMS',
     category: 'Headless CMS',
     local: 'headless-cms'
   },
   'headless-cms/contentful': {
-    title: 'Contentful',
+    sidebarLabel: 'Contentful',
+    title: 'Build a Next.js Blog with Contentful',
     category: 'Headless CMS',
     github: 'cms-contentful'
   },
   'headless-cms/datocms': {
-    title: 'DatoCMS',
+    sidebarLabel: 'DatoCMS',
+    title: 'Build a Next.js Blog with DatoCMS',
     category: 'Headless CMS',
     github: 'cms-datocms'
   },
   'headless-cms/prismic': {
-    title: 'Prismic',
+    sidebarLabel: 'Prismic',
+    title: 'Build a Next.js Blog with Prismic',
     category: 'Headless CMS',
     github: 'cms-prismic'
   },
   'headless-cms/sanity': {
-    title: 'Sanity',
+    sidebarLabel: 'Sanity',
+    title: 'Build a Next.js Blog with Sanity',
     category: 'Headless CMS',
     github: 'cms-sanity'
   },
   'headless-cms/takeshape': {
-    title: 'TakeShape',
+    sidebarLabel: 'TakeShape',
+    title: 'Build a Next.js Blog with TakeShape',
     category: 'Headless CMS',
     github: 'cms-takeshape'
   },
   'authentication/introduction': {
-    title: 'Introduction',
+    sidebarLabel: 'Introduction',
+    title: 'Authentication',
     category: 'Authentication',
     local: 'authentication'
   },
   'authentication/auth0': {
-    title: 'Auth0',
+    sidebarLabel: 'Auth0',
+    title: '',
     category: 'Authentication',
     local: 'authentication'
   },
   'databases/introduction': {
-    title: 'Introduction',
+    sidebarLabel: 'Introduction',
+    title: '',
     category: 'Databases',
     local: 'databases'
   },
   'databases/fauna': {
-    title: 'Fauna',
+    sidebarLabel: 'Fauna',
+    title: '',
     category: 'Databases',
     local: 'fauna'
   }
