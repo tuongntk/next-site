@@ -128,10 +128,24 @@ const sidebarData: SidebarItem[] = [
       //   ]
       // }
     ]
+  },
+  {
+    title: 'More Examples',
+    type: 'heading',
+    routes: [
+      {
+        title: 'Amp',
+        type: 'category',
+        prefix: 'amp',
+        routes: [
+          {
+            type: 'example',
+            slug: 'amp'
+          }
+        ]
+      }
+    ]
   }
-  // {
-  //   title: 'More Examples',
-  //   heading: true,
   //   routes: [
   //     {
   //       title: 'Routing',
