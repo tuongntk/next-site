@@ -53,18 +53,18 @@ const examplesData: {
   },
   'authentication/auth0': {
     sidebarLabel: 'Auth0',
-    title: '',
-    local: 'authentication'
+    title: 'Next.js Authentication with Auth0',
+    github: 'auth0'
   },
-  'databases/introduction': {
+  'databases-graphql/introduction': {
     sidebarLabel: 'Introduction',
-    title: '',
-    local: 'databases'
+    title: 'Databases & GraphQL',
+    local: 'databases-graphql'
   },
-  'databases/fauna': {
+  'databases-graphql/fauna': {
     sidebarLabel: 'Fauna',
-    title: '',
-    local: 'fauna'
+    title: 'Connect a Next.js App with FaunaDB',
+    github: 'with-graphql-faunadb'
   },
   'images-videos/introduction': {
     sidebarLabel: 'Introduction',
@@ -73,8 +73,13 @@ const examplesData: {
   },
   'images-videos/mux': {
     sidebarLabel: 'Mux',
-    title: 'Build a Video Uploader App with Mux',
+    title: 'Build a Video Uploader App with Next.js and Mux',
     github: 'with-mux-video'
+  },
+  'amp/amp-story': {
+    sidebarLabel: 'Amp Story',
+    title: 'AMP Story',
+    github: 'amp-story'
   }
 };
 

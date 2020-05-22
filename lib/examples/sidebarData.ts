@@ -68,17 +68,17 @@ const sidebarData: SidebarItem[] = [
         ]
       },
       {
-        title: 'Databases',
+        title: 'Databases & GraphQL',
         type: 'category',
-        prefix: 'databases',
+        prefix: 'databases-graphql',
         routes: [
           {
             type: 'example',
-            slug: 'databases/introduction'
+            slug: 'databases-graphql/introduction'
           },
           {
             type: 'example',
-            slug: 'databases/fauna'
+            slug: 'databases-graphql/fauna'
           }
         ]
       },
@@ -155,7 +155,7 @@ const sidebarData: SidebarItem[] = [
         routes: [
           {
             type: 'example',
-            slug: 'amp'
+            slug: 'amp/amp-story'
           }
         ]
       }
