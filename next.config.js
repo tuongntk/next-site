@@ -137,6 +137,11 @@ const nextConfig = {
           permanent: true,
           destination: '/learn/basics/create-nextjs-app'
         },
+        {
+          source: '/examples{/}?',
+          permanent: true,
+          destination: '/examples/introduction'
+        },
         ...navigateBetweenPagesLessonsRedirect,
         ...apiRoutesLessonsRedirect,
         ...basicsLessonsRedirect,

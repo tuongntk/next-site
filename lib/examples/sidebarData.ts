@@ -81,6 +81,21 @@ const sidebarData: SidebarItem[] = [
             slug: 'databases/fauna'
           }
         ]
+      },
+      {
+        title: 'Images & Videos',
+        type: 'category',
+        prefix: 'images-videos',
+        routes: [
+          {
+            type: 'example',
+            slug: 'images-videos/introduction'
+          },
+          {
+            type: 'example',
+            slug: 'images-videos/mux'
+          }
+        ]
       }
       // {
       //   title: 'Emails',
