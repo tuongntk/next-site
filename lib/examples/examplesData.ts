@@ -15,7 +15,7 @@ const examplesData: {
   },
   'headless-cms/introduction': {
     title: 'Introduction',
-    category: 'Category',
+    category: 'Headless CMS',
     local: 'headless-cms'
   },
   'headless-cms/contentful': {
@@ -42,6 +42,26 @@ const examplesData: {
     title: 'TakeShape',
     category: 'Headless CMS',
     github: 'cms-takeshape'
+  },
+  'authentication/introduction': {
+    title: 'Introduction',
+    category: 'Authentication',
+    local: 'authentication'
+  },
+  'authentication/auth0': {
+    title: 'Auth0',
+    category: 'Authentication',
+    local: 'authentication'
+  },
+  'databases/introduction': {
+    title: 'Introduction',
+    category: 'Databases',
+    local: 'databases'
+  },
+  'databases/fauna': {
+    title: 'Fauna',
+    category: 'Databases',
+    local: 'fauna'
   }
 };
 

@@ -7,7 +7,7 @@ export type SidebarItem =
   | { type: 'example'; slug: string }
   | {
       type: 'category';
-      prefix: 'headless-cms';
+      prefix: string;
       title: string;
       routes: SidebarItem[];
     };
@@ -51,18 +51,46 @@ const sidebarData: SidebarItem[] = [
             slug: 'headless-cms/takeshape'
           }
         ]
+      },
+      {
+        title: 'Authentication',
+        type: 'category',
+        prefix: 'authentication',
+        routes: [
+          {
+            type: 'example',
+            slug: 'authentication/introduction'
+          },
+          {
+            type: 'example',
+            slug: 'authentication/auth0'
+          }
+        ]
+      },
+      {
+        title: 'Databases',
+        type: 'category',
+        prefix: 'databases',
+        routes: [
+          {
+            type: 'example',
+            slug: 'databases/introduction'
+          },
+          {
+            type: 'example',
+            slug: 'databases/fauna'
+          }
+        ]
       }
       // {
-      //   title: 'Authentication',
+      //   title: 'Emails',
       //   routes: [
       //     {
-      //       path: 'authentication/introduction'
-      //     },
-      //     {
-      //       path: 'authentication/auth0'
+      //       title: '?',
+      //       slug: '?'
       //     }
       //   ]
-      // }
+      // },
       // {
       //   title: 'API Routes and Middleware',
       //   routes: [
@@ -74,24 +102,6 @@ const sidebarData: SidebarItem[] = [
       // },
       // {
       //   title: 'Realtime',
-      //   routes: [
-      //     {
-      //       title: '?',
-      //       slug: '?'
-      //     }
-      //   ]
-      // },
-      // {
-      //   title: 'Databases',
-      //   routes: [
-      //     {
-      //       title: '?',
-      //       slug: '?'
-      //     }
-      //   ]
-      // },
-      // {
-      //   title: 'Emails',
       //   routes: [
       //     {
       //       title: '?',
