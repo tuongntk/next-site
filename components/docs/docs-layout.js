@@ -82,6 +82,11 @@ export default function DocsLayout({ children }) {
           margin: 1.25rem 0;
         }
 
+        .docs p > img {
+          display: block;
+          max-width: 100%;
+        }
+
         /* Inline code */
         .docs code.inline {
           color: rgb(212, 0, 255);

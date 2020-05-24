@@ -142,7 +142,7 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
   }
   const md = await getExampleMarkdown(data);
   const { content } = matter(md);
-  const html = await markdownToHtml(content);
+  const html = await markdownToHtml(content, { exampleName: data.github });
   return { props: { pageSlug: params.slug.join('/'), data, html } };
 };
 

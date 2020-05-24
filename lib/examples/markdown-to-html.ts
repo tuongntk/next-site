@@ -6,6 +6,7 @@ import sanitize from 'rehype-sanitize';
 import prism from '@mapbox/rehype-prism';
 import html from 'rehype-stringify';
 import githubSchema from 'hast-util-sanitize/lib/github.json';
+import rehypeExamples from './rehype-examples';
 
 // Allow className for all elements
 githubSchema.attributes['*'].push('className');
@@ -28,23 +29,24 @@ const handlers = {
   }
 };
 
-// Create the processor, the order of the plugins is important
-const getProcessor = unified()
-  .use(markdown)
-  .use(remarkToRehype, { handlers, allowDangerousHTML: true })
-  // Add custom HTML found in the markdown file to the AST
-  .use(raw)
-  // Sanitize the HTML
-  .use(sanitize, githubSchema)
-  // Add syntax highlighting to the sanitized HTML
-  .use(prism)
-  .use(html)
-  .freeze();
-
-export default async function markdownToHtml(md: string): Promise<string> {
+export default async function markdownToHtml(
+  md: string,
+  options: { exampleName?: string }
+): Promise<string> {
   try {
     // Init the processor with our custom plugin
-    const processor = getProcessor();
+    const processor = unified()
+      .use(markdown)
+      .use(remarkToRehype, { handlers, allowDangerousHTML: true })
+      // Add custom HTML found in the markdown file to the AST
+      .use(raw)
+      // Sanitize the HTML
+      .use(sanitize, githubSchema)
+      // Add syntax highlighting to the sanitized HTML
+      .use(prism)
+      .use(html)
+      .use(rehypeExamples, options)
+      .freeze();
     const file = await processor.process(md);
 
     // Replace non-breaking spaces (char code 160) with normal spaces to avoid style issues
