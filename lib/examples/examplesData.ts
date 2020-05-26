@@ -5,6 +5,7 @@ export type ExamplesDataItem = {
   github?: string;
   description?: string;
   topPage?: boolean;
+  markdownAfter?: string;
 };
 
 const examplesData: {
@@ -24,7 +25,8 @@ const examplesData: {
   'headless-cms/contentful': {
     sidebarLabel: 'Contentful',
     title: 'Build a Next.js Blog with Contentful',
-    github: 'cms-contentful'
+    github: 'cms-contentful',
+    markdownAfter: '## Configuration'
   },
   'headless-cms/datocms': {
     sidebarLabel: 'DatoCMS',

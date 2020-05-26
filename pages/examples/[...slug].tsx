@@ -141,7 +141,11 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
     throw new Error('Example Data Not Found');
   }
   const md = await getExampleMarkdown(data);
-  const { content } = matter(md);
+  let { content } = matter(md);
+  if (data.markdownAfter && content.includes(data.markdownAfter)) {
+    // eslint-disable-next-line prefer-destructuring
+    content = content.split(data.markdownAfter)[1];
+  }
   const html = await markdownToHtml(content, { exampleName: data.github });
   return { props: { pageSlug: params.slug.join('/'), data, html } };
 };
