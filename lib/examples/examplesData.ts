@@ -6,6 +6,7 @@ export type ExamplesDataItem = {
   description?: string;
   topPage?: boolean;
   markdownAfter?: string;
+  demoUrl?: string;
 };
 
 const examplesData: {
@@ -26,7 +27,10 @@ const examplesData: {
     sidebarLabel: 'Contentful',
     title: 'Build a Next.js Blog with Contentful',
     github: 'cms-contentful',
-    markdownAfter: '## Configuration'
+    markdownAfter: '## Configuration',
+    demoUrl: 'https://next-blog-contentful.now.sh/',
+    description:
+      'This example showcases Next.js’s Static Generation feature using Contentful as the data source.'
   },
   'headless-cms/datocms': {
     sidebarLabel: 'DatoCMS',
