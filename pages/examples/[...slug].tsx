@@ -88,7 +88,7 @@ const ExamplesSlug: React.FC<Props> = ({ pageSlug, data, html, instructions }) =
 
   return (
     <FeedbackContext.Provider value={{ label: 'next-examples' }}>
-      <Page title={titleTag} description={false} sticky={!isMobile} isOldDocs={false}>
+      <Page title={titleTag} description={data.description} sticky={!isMobile} isOldDocs={false}>
         <PageContent>
           <Sticky shadow offset={null}>
             <SidebarMobile>
@@ -106,6 +106,7 @@ const ExamplesSlug: React.FC<Props> = ({ pageSlug, data, html, instructions }) =
                 demoUrl={data.demoUrl}
                 instructions={instructions}
                 pageSlug={pageSlug}
+                description={data.description}
               />
             </div>
             <style jsx>{`

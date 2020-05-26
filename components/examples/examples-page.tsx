@@ -3,6 +3,7 @@ import Button from '@components/button';
 import FooterFeedback from '@components/footer-feedback';
 import DocsLayout from '@components/docs/docs-layout';
 import { PermalinkIcon } from '@components/docs/heading';
+import Link from 'next/link';
 import { getRelatedExamples } from '@lib/examples/getRelatedExamples';
 
 type Props = {
@@ -11,6 +12,7 @@ type Props = {
   demoUrl?: string;
   instructions?: string;
   pageSlug: string;
+  description?: string;
 };
 
 function H2({ id, children }: { id: string; children: React.ReactNode }) {
@@ -25,11 +27,12 @@ function H2({ id, children }: { id: string; children: React.ReactNode }) {
   );
 }
 
-function ExamplesPage({ demoUrl, title, html, instructions, pageSlug }: Props) {
+function ExamplesPage({ demoUrl, title, html, instructions, pageSlug, description }: Props) {
   const relatedExamples = getRelatedExamples(pageSlug);
   return (
     <DocsLayout>
       <h1>{title}</h1>
+      <p>{description}</p>
       {demoUrl && (
         <div className="demo">
           <Button invert href={demoUrl}>
@@ -39,7 +42,7 @@ function ExamplesPage({ demoUrl, title, html, instructions, pageSlug }: Props) {
       )}
       {instructions && (
         <>
-          <H2 id="instruction">Instruction</H2>
+          <H2 id="create-a-project-locally">Create a Project Locally</H2>
           {/* eslint-disable-next-line */}
           <div dangerouslySetInnerHTML={{ __html: instructions }} />
         </>
@@ -49,11 +52,19 @@ function ExamplesPage({ demoUrl, title, html, instructions, pageSlug }: Props) {
       {relatedExamples && (
         <>
           <H2 id="related">Related {relatedExamples.categoryName} Examples</H2>
-          <ul>
-            {relatedExamples.items.map(({ sidebarLabel }) => (
-              <li key={sidebarLabel}>{sidebarLabel}</li>
-            ))}
-          </ul>
+          {relatedExamples.items.map(
+            ({ slug, sidebarLabel, description: itemDescription }) =>
+              slug !== pageSlug && (
+                <div key={sidebarLabel} className="card">
+                  <Link href="/examples/[...slug]" as={`/examples/${slug}`}>
+                    <a>
+                      <h4>{sidebarLabel}</h4>
+                      <small>{itemDescription}</small>
+                    </a>
+                  </Link>
+                </div>
+              )
+          )}
         </>
       )}
       <hr />
