@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import matter from 'gray-matter';
-import { examplePaths, getExampleMarkdown } from '@lib/examples/helpers';
+import { examplePaths, getExampleMarkdown, instructionsMarkdown } from '@lib/examples/helpers';
 import examplesData, { ExamplesDataItem } from '@lib/examples/examplesData';
 import sidebarData, { SidebarItem } from '@lib/examples/sidebarData';
 import PageContent from '@components/page-content';
@@ -79,9 +79,10 @@ type Props = {
   pageSlug: string;
   html: string;
   data: ExamplesDataItem;
+  instructions?: string;
 };
 
-const ExamplesSlug: React.FC<Props> = ({ pageSlug, data, html }) => {
+const ExamplesSlug: React.FC<Props> = ({ pageSlug, data, html, instructions }) => {
   const isMobile = useIsMobile();
   const titleTag = data.topPage ? data.title : `${data.title} | Next.js Examples`;
 
@@ -99,7 +100,13 @@ const ExamplesSlug: React.FC<Props> = ({ pageSlug, data, html }) => {
               <Sidebar fixed>
                 <SidebarRoutes pageSlug={pageSlug} routes={sidebarData} />
               </Sidebar>
-              <ExamplesPage title={data.title} html={html} />
+              <ExamplesPage
+                title={data.title}
+                html={html}
+                demoUrl={data.demoUrl}
+                instructions={instructions}
+                pageSlug={pageSlug}
+              />
             </div>
             <style jsx>{`
               .content {
@@ -144,10 +151,14 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
   let { content } = matter(md);
   if (data.markdownAfter && content.includes(data.markdownAfter)) {
     // eslint-disable-next-line prefer-destructuring
-    content = content.split(data.markdownAfter)[1];
+    content = `${data.markdownAfter}${content.split(data.markdownAfter)[1]}`;
   }
   const html = await markdownToHtml(content, { exampleName: data.github });
-  return { props: { pageSlug: params.slug.join('/'), data, html } };
+  const instructions = data.github
+    ? await markdownToHtml(instructionsMarkdown(data.github))
+    : undefined;
+
+  return { props: { pageSlug: params.slug.join('/'), data, html, instructions } };
 };
 
 export default ExamplesSlug;

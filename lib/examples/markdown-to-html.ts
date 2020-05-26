@@ -31,7 +31,7 @@ const handlers = {
 
 export default async function markdownToHtml(
   md: string,
-  options: { exampleName?: string }
+  options?: { exampleName?: string }
 ): Promise<string> {
   try {
     // Init the processor with our custom plugin
@@ -45,7 +45,7 @@ export default async function markdownToHtml(
       // Add syntax highlighting to the sanitized HTML
       .use(prism)
       .use(html)
-      .use(rehypeExamples, options)
+      .use(rehypeExamples, options || {})
       .freeze();
     const file = await processor.process(md);
 
