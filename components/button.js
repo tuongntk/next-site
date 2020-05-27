@@ -38,6 +38,9 @@ const cachedStyles = css`
     box-shadow: 0 4px 14px 0 rgba(0, 118, 255, 0.39);
     color: white;
   }
+  .btn.invert.medium {
+    padding: 0 2rem;
+  }
   .btn.invert:hover {
     background: rgba(0, 118, 255, 0.9);
     box-shadow: 0 6px 20px rgba(0, 118, 255, 0.23);
@@ -88,12 +91,14 @@ export default withPure(function Button({
   className,
   amp,
   loading,
+  medium,
   ...props
 }) {
   const cachedClassNames = classNames(className, 'btn', 'fw4 no-drag', {
     outline,
     invert,
     small,
+    medium,
     loading
   });
 

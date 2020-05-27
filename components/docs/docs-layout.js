@@ -93,6 +93,7 @@ export default function DocsLayout({ children }) {
           font-size: 0.9em;
           white-space: pre-wrap;
           transition: color 0.2s ease;
+          word-wrap: break-word;
         }
 
         /* Code */

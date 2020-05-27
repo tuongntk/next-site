@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import matter from 'gray-matter';
+import { GITHUB_URL, REPO_NAME } from 'lib/github/constants';
 import {
   examplePaths,
   getExampleMarkdown,
@@ -125,6 +126,7 @@ const ExamplesSlug: React.FC<Props> = ({
   categoryPage,
   description,
   demoUrl,
+  sourceUrl,
   instructions
 }) => {
   const isMobile = useIsMobile();
@@ -152,6 +154,7 @@ const ExamplesSlug: React.FC<Props> = ({
                 pageSlug={pageSlug}
                 description={description}
                 categoryPage={categoryPage}
+                sourceUrl={sourceUrl}
               />
             </div>
             <style jsx>{`
@@ -225,6 +228,7 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
   }
   html = await markdownToHtml(content, { exampleName: data.github });
   const instructions = await markdownToHtml(instructionsMarkdown(data.github));
+  const sourceUrl = `${GITHUB_URL}/${REPO_NAME}/tree/canary/examples/${data.github}`;
   return {
     props: {
       pageSlug: params.slug.join('/'),
@@ -234,7 +238,8 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
       demoUrl: data.demoUrl || null,
       title: data.title,
       topPage: false,
-      categoryPage: false
+      categoryPage: false,
+      sourceUrl
     }
   };
 };

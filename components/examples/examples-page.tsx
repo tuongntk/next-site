@@ -10,6 +10,7 @@ type Props = {
   title: string;
   html: string;
   demoUrl: string | null;
+  sourceUrl: string | null;
   instructions: string | null;
   pageSlug: string;
   description: string | null;
@@ -35,19 +36,36 @@ function ExamplesPage({
   instructions,
   pageSlug,
   description,
-  categoryPage
+  categoryPage,
+  sourceUrl
 }: Props) {
   const relatedExamples = categoryPage ? null : getRelatedExamples(pageSlug);
   return (
     <DocsLayout>
       <h1>{title}</h1>
       <p>{description}</p>
-      {demoUrl && (
-        <div className="demo">
-          <Button invert href={demoUrl}>
-            View Demo
-          </Button>
-        </div>
+      {demoUrl && sourceUrl && (
+        <p>
+          {demoUrl && (
+            <span className="demo-button">
+              <Button invert medium href={demoUrl} target="_blank" rel="noopener noreferrer">
+                View Demo
+              </Button>
+            </span>
+          )}
+          {sourceUrl && (
+            <Button
+              invert
+              outline
+              medium
+              href={sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Source
+            </Button>
+          )}
+        </p>
       )}
       {instructions && (
         <>
@@ -76,8 +94,8 @@ function ExamplesPage({
       <hr />
       <FooterFeedback />
       <style jsx>{`
-        .demo {
-          margin-top: 40px;
+        .demo-button {
+          margin-right: 1rem;
         }
       `}</style>
     </DocsLayout>
