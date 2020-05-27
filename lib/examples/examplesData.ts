@@ -1,39 +1,28 @@
 export type ExamplesDataItem = {
-  sidebarLabel?: string;
+  sidebarLabel: string;
   title: string;
-  local?: string;
-  github?: string;
+  github: string;
   description?: string;
-  topPage?: boolean;
   markdownAfter?: string;
   demoUrl?: string;
 };
 
-export const introductionData: ExamplesDataItem = {
-  topPage: true,
+export const introductionData = {
   title: 'Next.js Examples',
-  local: 'introduction'
+  description: 'TODO'
 };
 
 export const categoriesData: {
-  [key: string]: ExamplesDataItem | undefined;
+  [key: string]: {
+    title: string;
+    description: string;
+  };
 } = {
-  'headless-cms': {
-    title: 'Headless CMS',
-    local: 'headless-cms'
-  },
-  authentication: {
-    title: 'Authentication',
-    local: 'authentication'
-  },
-  'databases-graphql': {
-    title: 'Databases & GraphQL',
-    local: 'databases-graphql'
-  },
-  'images-videos': {
-    title: 'Images & Videos',
-    local: 'images-videos'
-  }
+  'headless-cms': { title: 'Blog & Headless CMS', description: 'TODO' },
+  authentication: { title: 'Authentication', description: 'TODO' },
+  'databases-graphql': { title: 'Databases & GraphQL', description: 'TODO' },
+  'images-videos': { title: 'Images & Videos', description: 'TODO' },
+  amp: { title: 'Amp', description: 'TODO' }
 };
 
 const examplesData: {

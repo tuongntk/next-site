@@ -8,7 +8,6 @@ export type HeadingItem = {
 export type CategoryItem = {
   type: 'category';
   prefix: string;
-  title: string;
   hasIntroduction?: boolean;
   routes: ExampleItem[];
 };
@@ -17,7 +16,6 @@ export type ExampleItem = { type: 'example'; slug: string };
 
 export const featuredCategories: CategoryItem[] = [
   {
-    title: 'Headless CMS',
     type: 'category',
     prefix: 'headless-cms',
     hasIntroduction: true,
@@ -45,7 +43,6 @@ export const featuredCategories: CategoryItem[] = [
     ]
   },
   {
-    title: 'Authentication',
     type: 'category',
     prefix: 'authentication',
     hasIntroduction: true,
@@ -57,7 +54,6 @@ export const featuredCategories: CategoryItem[] = [
     ]
   },
   {
-    title: 'Databases & GraphQL',
     type: 'category',
     prefix: 'databases-graphql',
     hasIntroduction: true,
@@ -69,7 +65,6 @@ export const featuredCategories: CategoryItem[] = [
     ]
   },
   {
-    title: 'Images & Videos',
     type: 'category',
     prefix: 'images-videos',
     hasIntroduction: true,
@@ -144,7 +139,6 @@ const sidebarData: HeadingItem[] = [
     type: 'heading',
     routes: [
       {
-        title: 'Amp',
         type: 'category',
         prefix: 'amp',
         routes: [

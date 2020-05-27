@@ -9,11 +9,11 @@ import { getRelatedExamples } from '@lib/examples/getRelatedExamples';
 type Props = {
   title: string;
   html: string;
-  demoUrl?: string;
+  demoUrl: string | null;
   instructions: string | null;
   pageSlug: string;
-  description?: string;
-  introduction: boolean;
+  description: string | null;
+  categoryPage: boolean;
 };
 
 function H2({ id, children }: { id: string; children: React.ReactNode }) {
@@ -35,9 +35,9 @@ function ExamplesPage({
   instructions,
   pageSlug,
   description,
-  introduction
+  categoryPage
 }: Props) {
-  const relatedExamples = introduction ? null : getRelatedExamples(pageSlug);
+  const relatedExamples = categoryPage ? null : getRelatedExamples(pageSlug);
   return (
     <DocsLayout>
       <h1>{title}</h1>
@@ -58,22 +58,19 @@ function ExamplesPage({
       )}
       {/* eslint-disable-next-line */}
       <div dangerouslySetInnerHTML={{ __html: html }} />
-      {relatedExamples && (
+      {relatedExamples && relatedExamples.items.length > 0 && (
         <>
           <H2 id="related">Related {relatedExamples.categoryName} Examples</H2>
-          {relatedExamples.items.map(
-            ({ slug, sidebarLabel, description: itemDescription }) =>
-              slug !== pageSlug && (
-                <div key={sidebarLabel} className="card">
-                  <Link href="/examples/[...slug]" as={`/examples/${slug}`}>
-                    <a>
-                      <h4>{sidebarLabel}</h4>
-                      <small>{itemDescription}</small>
-                    </a>
-                  </Link>
-                </div>
-              )
-          )}
+          {relatedExamples.items.map(({ slug, sidebarLabel, description: itemDescription }) => (
+            <div key={sidebarLabel} className="card">
+              <Link href="/examples/[...slug]" as={`/examples/${slug}`}>
+                <a>
+                  <h4>{sidebarLabel}</h4>
+                  <small>{itemDescription}</small>
+                </a>
+              </Link>
+            </div>
+          ))}
         </>
       )}
       <hr />

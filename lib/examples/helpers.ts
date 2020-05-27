@@ -1,14 +1,13 @@
 import { readFile } from '@lib/fs-utils';
 import path from 'path';
-import { ExamplesDataItem } from '@lib/examples/examplesData';
 import sidebarData, { HeadingItem, ExampleItem, CategoryItem } from '@lib/examples/sidebarData';
 
-export async function getExampleMarkdown(data: ExamplesDataItem): Promise<string> {
-  if (data.local) {
-    return readFile(path.join(process.cwd(), `examples/${data.local}.md`), 'utf8');
-  }
-  // TODO: Fetch from GitHub after updating README.md over there
-  return readFile(path.join(process.cwd(), `examples/${data.github}.md`), 'utf8');
+export async function getExampleMarkdown(exampleDirectoryName: string): Promise<string> {
+  return readFile(path.join(process.cwd(), `examples/${exampleDirectoryName}.md`), 'utf8');
+}
+
+export async function getLocalMarkdown(fileName: string): Promise<string> {
+  return readFile(path.join(process.cwd(), `examples/${fileName}.md`), 'utf8');
 }
 
 export function instructionsMarkdown(exampleName: string) {

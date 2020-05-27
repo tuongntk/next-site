@@ -10,7 +10,7 @@ export default function SocialMeta({
   keywords
 }: {
   title?: string;
-  description?: string;
+  description: string | null;
   image?: string;
   url?: string;
   keywords?: string;

@@ -1,11 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import matter from 'gray-matter';
-import { examplePaths, getExampleMarkdown, instructionsMarkdown } from '@lib/examples/helpers';
-import examplesData, {
-  ExamplesDataItem,
-  introductionData,
-  categoriesData
-} from '@lib/examples/examplesData';
+import {
+  examplePaths,
+  getExampleMarkdown,
+  instructionsMarkdown,
+  getLocalMarkdown
+} from '@lib/examples/helpers';
+import examplesData, { introductionData, categoriesData } from '@lib/examples/examplesData';
 import sidebarData, { CategoryItem, HeadingItem, ExampleItem } from '@lib/examples/sidebarData';
 import PageContent from '@components/page-content';
 import Container from '@components/container';
@@ -61,10 +62,10 @@ function SidebarRoutes({
           const selected = pageSlug.startsWith(sidebarItem.prefix);
           return (
             <Category
-              key={sidebarItem.title}
+              key={sidebarItem.prefix}
               isMobile={isMobile}
               level={level}
-              title={sidebarItem.title}
+              title={categoriesData[sidebarItem.prefix].title}
               selected={selected}
               opened={selected}
             >
@@ -108,17 +109,30 @@ function SidebarRoutes({
 type Props = {
   pageSlug: string;
   html: string;
-  data: ExamplesDataItem;
+  topPage: boolean;
+  categoryPage: boolean;
+  description: string | null;
+  demoUrl: string | null;
+  title: string;
   instructions: string | null;
 };
 
-const ExamplesSlug: React.FC<Props> = ({ pageSlug, data, html, instructions }) => {
+const ExamplesSlug: React.FC<Props> = ({
+  pageSlug,
+  html,
+  title,
+  topPage,
+  categoryPage,
+  description,
+  demoUrl,
+  instructions
+}) => {
   const isMobile = useIsMobile();
-  const titleTag = data.topPage ? data.title : `${data.title} | Next.js Examples`;
+  const titleTag = topPage ? title : `${title} | Next.js Examples`;
 
   return (
     <FeedbackContext.Provider value={{ label: 'next-examples' }}>
-      <Page title={titleTag} description={data.description} sticky={!isMobile} isOldDocs={false}>
+      <Page title={titleTag} description={description} sticky={!isMobile} isOldDocs={false}>
         <PageContent>
           <Sticky shadow offset={null}>
             <SidebarMobile>
@@ -131,13 +145,13 @@ const ExamplesSlug: React.FC<Props> = ({ pageSlug, data, html, instructions }) =
                 <SidebarRoutes pageSlug={pageSlug} routes={sidebarData} />
               </Sidebar>
               <ExamplesPage
-                title={data.title}
+                title={title}
                 html={html}
-                demoUrl={data.demoUrl}
+                demoUrl={demoUrl}
                 instructions={instructions}
                 pageSlug={pageSlug}
-                description={data.description}
-                introduction={!!data.local}
+                description={description}
+                categoryPage={categoryPage}
               />
             </div>
             <style jsx>{`
@@ -153,10 +167,10 @@ const ExamplesSlug: React.FC<Props> = ({ pageSlug, data, html, instructions }) =
             `}</style>
           </Container>
           <SocialMeta
-            title={data.title}
+            title={title}
             url={`https://nextjs.org/examples/${pageSlug}`}
             image="/static/twitter-cards/documentation.png"
-            description={data.description}
+            description={description}
           />
         </PageContent>
       </Page>
@@ -175,25 +189,54 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
   if (!params) {
     throw new Error('Params don’t exist');
   }
-  const data =
-    params.slug[0] === 'introduction'
-      ? introductionData
-      : params.slug[1] === 'introduction'
-      ? categoriesData[params.slug[0]]
-      : examplesData[params.slug.join('/')];
+  let markdown: string;
+  let content: string;
+  let html: string;
+  if (params.slug.includes('introduction')) {
+    const topPage = params.slug[0] === 'introduction';
+    const { title, description } = topPage ? introductionData : categoriesData[params.slug[0]];
+    markdown = topPage
+      ? await getLocalMarkdown('introduction')
+      : await getLocalMarkdown(params.slug[0]);
+    content = matter(markdown).content;
+    html = await markdownToHtml(markdown);
+    return {
+      props: {
+        pageSlug: params.slug.join('/'),
+        html,
+        topPage,
+        categoryPage: !topPage,
+        title,
+        description,
+        demoUrl: null,
+        instructions: null
+      }
+    };
+  }
+  const data = examplesData[params.slug.join('/')];
   if (!data) {
     throw new Error('Example Data Not Found');
   }
-  const md = await getExampleMarkdown(data);
-  let { content } = matter(md);
+  markdown = await getExampleMarkdown(data.github);
+  content = matter(markdown).content;
   if (data.markdownAfter && content.includes(data.markdownAfter)) {
     // eslint-disable-next-line prefer-destructuring
     content = `${data.markdownAfter}${content.split(data.markdownAfter)[1]}`;
   }
-  const html = await markdownToHtml(content, { exampleName: data.github });
-  const instructions = data.github ? await markdownToHtml(instructionsMarkdown(data.github)) : null;
-
-  return { props: { pageSlug: params.slug.join('/'), data, html, instructions } };
+  html = await markdownToHtml(content, { exampleName: data.github });
+  const instructions = await markdownToHtml(instructionsMarkdown(data.github));
+  return {
+    props: {
+      pageSlug: params.slug.join('/'),
+      html,
+      instructions,
+      description: data.description || null,
+      demoUrl: data.demoUrl || null,
+      title: data.title,
+      topPage: false,
+      categoryPage: false
+    }
+  };
 };
 
 export default ExamplesSlug;
