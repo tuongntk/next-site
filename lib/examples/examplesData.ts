@@ -1,5 +1,5 @@
 export type ExamplesDataItem = {
-  sidebarLabel: string;
+  sidebarLabel?: string;
   title: string;
   local?: string;
   github?: string;
@@ -9,20 +9,36 @@ export type ExamplesDataItem = {
   demoUrl?: string;
 };
 
-const examplesData: {
+export const introductionData: ExamplesDataItem = {
+  topPage: true,
+  title: 'Next.js Examples',
+  local: 'introduction'
+};
+
+export const categoriesData: {
   [key: string]: ExamplesDataItem | undefined;
 } = {
-  introduction: {
-    sidebarLabel: 'Introduction',
-    topPage: true,
-    title: 'Next.js Examples',
-    local: 'introduction'
-  },
-  'headless-cms/introduction': {
-    sidebarLabel: 'Introduction',
+  'headless-cms': {
     title: 'Headless CMS',
     local: 'headless-cms'
   },
+  authentication: {
+    title: 'Authentication',
+    local: 'authentication'
+  },
+  'databases-graphql': {
+    title: 'Databases & GraphQL',
+    local: 'databases-graphql'
+  },
+  'images-videos': {
+    title: 'Images & Videos',
+    local: 'images-videos'
+  }
+};
+
+const examplesData: {
+  [key: string]: ExamplesDataItem | undefined;
+} = {
   'headless-cms/contentful': {
     sidebarLabel: 'Contentful',
     title: 'Build a Next.js Blog with Contentful',
@@ -52,30 +68,15 @@ const examplesData: {
     title: 'Build a Next.js Blog with TakeShape',
     github: 'cms-takeshape'
   },
-  'authentication/introduction': {
-    sidebarLabel: 'Introduction',
-    title: 'Authentication',
-    local: 'authentication'
-  },
   'authentication/auth0': {
     sidebarLabel: 'Auth0',
     title: 'Next.js Authentication with Auth0',
     github: 'auth0'
   },
-  'databases-graphql/introduction': {
-    sidebarLabel: 'Introduction',
-    title: 'Databases & GraphQL',
-    local: 'databases-graphql'
-  },
   'databases-graphql/fauna': {
     sidebarLabel: 'Fauna',
     title: 'Connect a Next.js App with FaunaDB',
     github: 'with-graphql-faunadb'
-  },
-  'images-videos/introduction': {
-    sidebarLabel: 'Introduction',
-    title: 'Images & Videos',
-    local: 'images-videos'
   },
   'images-videos/mux': {
     sidebarLabel: 'Mux',

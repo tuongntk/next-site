@@ -1,7 +1,7 @@
 import { readFile } from '@lib/fs-utils';
 import path from 'path';
 import { ExamplesDataItem } from '@lib/examples/examplesData';
-import sidebarData, { SidebarItem, ExampleItem, CategoryItem } from '@lib/examples/sidebarData';
+import sidebarData, { HeadingItem, ExampleItem, CategoryItem } from '@lib/examples/sidebarData';
 
 export async function getExampleMarkdown(data: ExamplesDataItem): Promise<string> {
   if (data.local) {
@@ -19,12 +19,20 @@ npx create-next-app --example ${exampleName} ${exampleName}-app
 \`\`\``;
 }
 
-function getAllPaths(items: (SidebarItem | ExampleItem | CategoryItem)[]): string[] {
+function getAllPaths(items: (HeadingItem | ExampleItem | CategoryItem)[]): string[] {
   const result: string[] = [];
   items.forEach(item => {
     if (item.type === 'example') {
       result.push(`/examples/${item.slug}`);
+    } else if (item.type === 'category') {
+      if (item.hasIntroduction) {
+        result.push(`/examples/${item.prefix}/introduction`);
+      }
+      result.push(...getAllPaths(item.routes));
     } else {
+      if (item.hasIntroduction) {
+        result.push(`/examples/introduction`);
+      }
       result.push(...getAllPaths(item.routes));
     }
   });

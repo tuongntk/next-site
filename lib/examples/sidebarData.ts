@@ -1,6 +1,7 @@
-export type SidebarItem = {
+export type HeadingItem = {
   type: 'heading';
   title: string;
+  hasIntroduction?: boolean;
   routes: (ExampleItem | CategoryItem)[];
 };
 
@@ -8,6 +9,7 @@ export type CategoryItem = {
   type: 'category';
   prefix: string;
   title: string;
+  hasIntroduction?: boolean;
   routes: ExampleItem[];
 };
 
@@ -18,11 +20,8 @@ export const featuredCategories: CategoryItem[] = [
     title: 'Headless CMS',
     type: 'category',
     prefix: 'headless-cms',
+    hasIntroduction: true,
     routes: [
-      {
-        type: 'example',
-        slug: 'headless-cms/introduction'
-      },
       {
         type: 'example',
         slug: 'headless-cms/contentful'
@@ -49,11 +48,8 @@ export const featuredCategories: CategoryItem[] = [
     title: 'Authentication',
     type: 'category',
     prefix: 'authentication',
+    hasIntroduction: true,
     routes: [
-      {
-        type: 'example',
-        slug: 'authentication/introduction'
-      },
       {
         type: 'example',
         slug: 'authentication/auth0'
@@ -64,11 +60,8 @@ export const featuredCategories: CategoryItem[] = [
     title: 'Databases & GraphQL',
     type: 'category',
     prefix: 'databases-graphql',
+    hasIntroduction: true,
     routes: [
-      {
-        type: 'example',
-        slug: 'databases-graphql/introduction'
-      },
       {
         type: 'example',
         slug: 'databases-graphql/fauna'
@@ -79,11 +72,8 @@ export const featuredCategories: CategoryItem[] = [
     title: 'Images & Videos',
     type: 'category',
     prefix: 'images-videos',
+    hasIntroduction: true,
     routes: [
-      {
-        type: 'example',
-        slug: 'images-videos/introduction'
-      },
       {
         type: 'example',
         slug: 'images-videos/mux'
@@ -92,6 +82,7 @@ export const featuredCategories: CategoryItem[] = [
   }
   // {
   //   title: 'Emails',
+  //   hasIntroduction: true,
   //   routes: [
   //     {
   //       title: '?',
@@ -101,6 +92,7 @@ export const featuredCategories: CategoryItem[] = [
   // },
   // {
   //   title: 'API Routes and Middleware',
+  //   hasIntroduction: true,
   //   routes: [
   //     {
   //       title: '?',
@@ -110,6 +102,7 @@ export const featuredCategories: CategoryItem[] = [
   // },
   // {
   //   title: 'Realtime',
+  //   hasIntroduction: true,
   //   routes: [
   //     {
   //       title: '?',
@@ -119,6 +112,7 @@ export const featuredCategories: CategoryItem[] = [
   // },
   // {
   //   title: 'Caching',
+  //   hasIntroduction: true,
   //   routes: [
   //     {
   //       titlle: '?',
@@ -128,6 +122,7 @@ export const featuredCategories: CategoryItem[] = [
   // },
   // {
   //   title: 'CSS and Styling',
+  //   hasIntroduction: true,
   //   routes: [
   //     {
   //       title: '?',
@@ -137,17 +132,12 @@ export const featuredCategories: CategoryItem[] = [
   // }
 ];
 
-const sidebarData: SidebarItem[] = [
+const sidebarData: HeadingItem[] = [
   {
     type: 'heading',
     title: 'Featured Examples',
-    routes: [
-      {
-        slug: 'introduction',
-        type: 'example'
-      },
-      ...featuredCategories
-    ]
+    hasIntroduction: true,
+    routes: featuredCategories
   },
   {
     title: 'More Examples',

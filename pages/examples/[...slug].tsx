@@ -1,8 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import matter from 'gray-matter';
 import { examplePaths, getExampleMarkdown, instructionsMarkdown } from '@lib/examples/helpers';
-import examplesData, { ExamplesDataItem } from '@lib/examples/examplesData';
-import sidebarData, { SidebarItem } from '@lib/examples/sidebarData';
+import examplesData, {
+  ExamplesDataItem,
+  introductionData,
+  categoriesData
+} from '@lib/examples/examplesData';
+import sidebarData, { CategoryItem, HeadingItem, ExampleItem } from '@lib/examples/sidebarData';
 import PageContent from '@components/page-content';
 import Container from '@components/container';
 import SocialMeta from '@components/social-meta';
@@ -22,7 +26,7 @@ function SidebarRoutes({
 }: {
   isMobile?: boolean;
   pageSlug: string;
-  routes: SidebarItem[];
+  routes: (HeadingItem | CategoryItem | ExampleItem)[];
   level?: number;
 }) {
   return (
@@ -31,6 +35,19 @@ function SidebarRoutes({
         if (sidebarItem.type === 'heading') {
           return (
             <Heading key={sidebarItem.title} title={sidebarItem.title}>
+              {sidebarItem.hasIntroduction && (
+                <Post
+                  isMobile={isMobile}
+                  level={level}
+                  route={{
+                    href: '/examples/[...slug]',
+                    slug: 'introduction',
+                    title: 'Introduction',
+                    pathname: `/examples/introduction`,
+                    selected: pageSlug === 'introduction'
+                  }}
+                />
+              )}
               <SidebarRoutes
                 pageSlug={pageSlug}
                 isMobile={isMobile}
@@ -51,6 +68,19 @@ function SidebarRoutes({
               selected={selected}
               opened={selected}
             >
+              {sidebarItem.hasIntroduction && (
+                <Post
+                  isMobile={isMobile}
+                  level={level}
+                  route={{
+                    href: '/examples/[...slug]',
+                    slug: `/examples/${sidebarItem.prefix}/introduction`,
+                    title: 'Introduction',
+                    pathname: `/examples/${sidebarItem.prefix}/introduction`,
+                    selected: pageSlug === `${sidebarItem.prefix}/introduction`
+                  }}
+                />
+              )}
               <SidebarRoutes
                 pageSlug={pageSlug}
                 isMobile={isMobile}
@@ -79,7 +109,7 @@ type Props = {
   pageSlug: string;
   html: string;
   data: ExamplesDataItem;
-  instructions?: string;
+  instructions: string | null;
 };
 
 const ExamplesSlug: React.FC<Props> = ({ pageSlug, data, html, instructions }) => {
@@ -107,6 +137,7 @@ const ExamplesSlug: React.FC<Props> = ({ pageSlug, data, html, instructions }) =
                 instructions={instructions}
                 pageSlug={pageSlug}
                 description={data.description}
+                introduction={!!data.local}
               />
             </div>
             <style jsx>{`
@@ -144,7 +175,12 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
   if (!params) {
     throw new Error('Params don’t exist');
   }
-  const data = examplesData[params.slug.join('/')];
+  const data =
+    params.slug[0] === 'introduction'
+      ? introductionData
+      : params.slug[1] === 'introduction'
+      ? categoriesData[params.slug[0]]
+      : examplesData[params.slug.join('/')];
   if (!data) {
     throw new Error('Example Data Not Found');
   }
@@ -155,9 +191,7 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
     content = `${data.markdownAfter}${content.split(data.markdownAfter)[1]}`;
   }
   const html = await markdownToHtml(content, { exampleName: data.github });
-  const instructions = data.github
-    ? await markdownToHtml(instructionsMarkdown(data.github))
-    : undefined;
+  const instructions = data.github ? await markdownToHtml(instructionsMarkdown(data.github)) : null;
 
   return { props: { pageSlug: params.slug.join('/'), data, html, instructions } };
 };

@@ -10,9 +10,10 @@ type Props = {
   title: string;
   html: string;
   demoUrl?: string;
-  instructions?: string;
+  instructions: string | null;
   pageSlug: string;
   description?: string;
+  introduction: boolean;
 };
 
 function H2({ id, children }: { id: string; children: React.ReactNode }) {
@@ -27,8 +28,16 @@ function H2({ id, children }: { id: string; children: React.ReactNode }) {
   );
 }
 
-function ExamplesPage({ demoUrl, title, html, instructions, pageSlug, description }: Props) {
-  const relatedExamples = getRelatedExamples(pageSlug);
+function ExamplesPage({
+  demoUrl,
+  title,
+  html,
+  instructions,
+  pageSlug,
+  description,
+  introduction
+}: Props) {
+  const relatedExamples = introduction ? null : getRelatedExamples(pageSlug);
   return (
     <DocsLayout>
       <h1>{title}</h1>
