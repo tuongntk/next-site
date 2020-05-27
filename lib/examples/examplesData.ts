@@ -18,7 +18,7 @@ export const categoriesData: {
     description: string;
   };
 } = {
-  'headless-cms': { title: 'Blog & Headless CMS', description: 'TODO' },
+  'blog-headless-cms': { title: 'Blog & Headless CMS', description: 'TODO' },
   authentication: { title: 'Authentication', description: 'TODO' },
   'databases-graphql': { title: 'Databases & GraphQL', description: 'TODO' },
   'images-videos': { title: 'Images & Videos', description: 'TODO' },
@@ -28,7 +28,7 @@ export const categoriesData: {
 const examplesData: {
   [key: string]: ExamplesDataItem | undefined;
 } = {
-  'headless-cms/contentful': {
+  'blog-headless-cms/contentful': {
     sidebarLabel: 'Contentful',
     title: 'Build a Next.js Blog with Contentful',
     github: 'cms-contentful',
@@ -37,22 +37,22 @@ const examplesData: {
     description:
       'This example showcases Next.js’s Static Generation feature using Contentful as the data source.'
   },
-  'headless-cms/datocms': {
+  'blog-headless-cms/datocms': {
     sidebarLabel: 'DatoCMS',
     title: 'Build a Next.js Blog with DatoCMS',
     github: 'cms-datocms'
   },
-  'headless-cms/prismic': {
+  'blog-headless-cms/prismic': {
     sidebarLabel: 'Prismic',
     title: 'Build a Next.js Blog with Prismic',
     github: 'cms-prismic'
   },
-  'headless-cms/sanity': {
+  'blog-headless-cms/sanity': {
     sidebarLabel: 'Sanity',
     title: 'Build a Next.js Blog with Sanity',
     github: 'cms-sanity'
   },
-  'headless-cms/takeshape': {
+  'blog-headless-cms/takeshape': {
     sidebarLabel: 'TakeShape',
     title: 'Build a Next.js Blog with TakeShape',
     github: 'cms-takeshape'

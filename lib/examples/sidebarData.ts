@@ -17,28 +17,28 @@ export type ExampleItem = { type: 'example'; slug: string };
 export const featuredCategories: CategoryItem[] = [
   {
     type: 'category',
-    prefix: 'headless-cms',
+    prefix: 'blog-headless-cms',
     hasIntroduction: true,
     routes: [
       {
         type: 'example',
-        slug: 'headless-cms/contentful'
+        slug: 'blog-headless-cms/contentful'
       },
       {
         type: 'example',
-        slug: 'headless-cms/datocms'
+        slug: 'blog-headless-cms/datocms'
       },
       {
         type: 'example',
-        slug: 'headless-cms/prismic'
+        slug: 'blog-headless-cms/prismic'
       },
       {
         type: 'example',
-        slug: 'headless-cms/sanity'
+        slug: 'blog-headless-cms/sanity'
       },
       {
         type: 'example',
-        slug: 'headless-cms/takeshape'
+        slug: 'blog-headless-cms/takeshape'
       }
     ]
   },
