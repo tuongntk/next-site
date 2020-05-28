@@ -57,17 +57,17 @@ export const featuredCategories: CategoryItem[] = [
       }
     ]
   },
-  {
-    type: 'category',
-    prefix: 'databases-graphql',
-    hasIntroduction: true,
-    routes: [
-      {
-        type: 'example',
-        slug: 'databases-graphql/fauna'
-      }
-    ]
-  },
+  // {
+  //   type: 'category',
+  //   prefix: 'databases-graphql',
+  //   hasIntroduction: true,
+  //   routes: [
+  //     {
+  //       type: 'example',
+  //       slug: 'databases-graphql/fauna'
+  //     }
+  //   ]
+  // },
   {
     type: 'category',
     prefix: 'images-videos',
@@ -137,23 +137,23 @@ const sidebarData: HeadingItem[] = [
     title: 'Featured Examples',
     hasIntroduction: true,
     routes: featuredCategories
-  },
-  {
-    title: 'More Examples',
-    type: 'heading',
-    routes: [
-      {
-        type: 'category',
-        prefix: 'amp',
-        routes: [
-          {
-            type: 'example',
-            slug: 'amp/amp-story'
-          }
-        ]
-      }
-    ]
   }
+  // {
+  //   title: 'More Examples',
+  //   type: 'heading',
+  //   routes: [
+  //     {
+  //       type: 'category',
+  //       prefix: 'amp',
+  //       routes: [
+  //         {
+  //           type: 'example',
+  //           slug: 'amp/amp-story'
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // }
   //   routes: [
   //     {
   //       title: 'Routing',

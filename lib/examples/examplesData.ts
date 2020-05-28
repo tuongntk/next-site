@@ -101,7 +101,12 @@ const examplesData: {
   'images-videos/mux': {
     sidebarLabel: 'Mux',
     title: 'Build a Video Uploader App with Next.js and Mux',
-    github: 'with-mux-video'
+    github: 'with-mux-video',
+    introContentEnd: '## Demo',
+    mainContentStart: '## Note',
+    demoUrl: 'https://with-mux-video.now.sh/',
+    description:
+      'This example uses Mux Video, an API-first platform for video. The example features video uploading and playback in a Next.js application.'
   },
   'amp/amp-story': {
     sidebarLabel: 'Amp Story',
