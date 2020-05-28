@@ -20,6 +20,7 @@ export default function Container({
   dark?: boolean;
   gray?: boolean;
   wide?: boolean;
+  wideOnMobile?: boolean;
   small?: boolean;
   padding?: boolean;
   overflow?: boolean;
