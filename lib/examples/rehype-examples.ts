@@ -36,7 +36,6 @@ export default function rehypeExamples({ exampleName }: { exampleName?: string }
 
     const id = slugger.slug(text);
 
-    console.log(node);
     if (node.tagName === 'h1') {
       node.tagName = 'h2';
     }
