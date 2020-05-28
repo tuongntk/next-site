@@ -33,6 +33,7 @@ export default async function markdownToHtml(
   md: string,
   options?: { exampleName?: string }
 ): Promise<string> {
+  const schema = { ...githubSchema, tagNames: githubSchema.tagNames.filter(tag => tag !== 'h1') };
   try {
     // Init the processor with our custom plugin
     const processor = unified()
@@ -41,7 +42,7 @@ export default async function markdownToHtml(
       // Add custom HTML found in the markdown file to the AST
       .use(raw)
       // Sanitize the HTML
-      .use(sanitize, githubSchema)
+      .use(sanitize, schema)
       // Add syntax highlighting to the sanitized HTML
       .use(prism)
       .use(html)
