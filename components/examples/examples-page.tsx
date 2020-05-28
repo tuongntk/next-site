@@ -16,6 +16,7 @@ type Props = {
   description: string | null;
   categoryPage: boolean;
   introHtml: string | null;
+  showDemo: boolean;
 };
 
 function H2({ id, children }: { id: string; children: React.ReactNode }) {
@@ -39,7 +40,8 @@ function ExamplesPage({
   description,
   categoryPage,
   sourceUrl,
-  introHtml
+  introHtml,
+  showDemo
 }: Props) {
   const relatedExamples = categoryPage ? null : getRelatedExamples(pageSlug);
   return (
@@ -70,6 +72,27 @@ function ExamplesPage({
               </Button>
             )}
           </div>
+        )}
+        {showDemo && (
+          <>
+            <H2 id="deploy-your-own">Deploy your own</H2>
+            <p>
+              Deploy the example using{' '}
+              <a href="" target="_blank" rel="noopener noreferrer">
+                Vercel
+              </a>
+              .
+            </p>
+            <div className="button">
+              <a
+                href={`https://vercel.com/import/project?template=${sourceUrl}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="https://vercel.com/button" alt="Deploy with Vercel" />
+              </a>
+            </div>
+          </>
         )}
         {instructions && (
           <>

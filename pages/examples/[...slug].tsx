@@ -118,6 +118,7 @@ type Props = {
   title: string;
   instructions: string | null;
   introHtml: string | null;
+  showDemo: boolean;
 };
 
 const ExamplesSlug: React.FC<Props> = ({
@@ -130,7 +131,8 @@ const ExamplesSlug: React.FC<Props> = ({
   demoUrl,
   sourceUrl,
   instructions,
-  introHtml
+  introHtml,
+  showDemo
 }) => {
   const isMobile = useIsMobile();
   const titleTag = topPage ? title : `${title} | Next.js Examples`;
@@ -159,6 +161,7 @@ const ExamplesSlug: React.FC<Props> = ({
                 categoryPage={categoryPage}
                 sourceUrl={sourceUrl}
                 introHtml={introHtml}
+                showDemo={showDemo}
               />
             </div>
             <style jsx>{`
@@ -219,7 +222,8 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
         demoUrl: null,
         instructions: null,
         sourceUrl: null,
-        introHtml: null
+        introHtml: null,
+        showDemo: false
       }
     };
   }
@@ -250,7 +254,8 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
       topPage: false,
       categoryPage: false,
       sourceUrl,
-      introHtml: introHtml || null
+      introHtml: introHtml || null,
+      showDemo: data.showDemo || false
     }
   };
 };

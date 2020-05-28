@@ -6,6 +6,7 @@ export type ExamplesDataItem = {
   mainContentStart?: string;
   demoUrl?: string;
   introContentEnd?: string;
+  showDemo?: boolean;
 };
 
 export const introductionData = {
@@ -90,6 +91,7 @@ const examplesData: {
     github: 'auth0',
     introContentEnd: '### Using',
     mainContentStart: '## Configuring Auth0',
+    showDemo: true,
     description:
       'This example shows how you can use @auth0/nextjs-auth to easily add authentication support to your Next.js application.'
   },
