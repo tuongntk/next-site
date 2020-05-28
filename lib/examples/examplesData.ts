@@ -3,7 +3,7 @@ export type ExamplesDataItem = {
   title: string;
   github: string;
   description?: string;
-  markdownAfter?: string;
+  mainContentStart?: string;
   demoUrl?: string;
 };
 
@@ -31,13 +31,14 @@ const examplesData: {
   'blog-headless-cms/blog-starter': {
     sidebarLabel: 'Markdown Blog',
     title: 'Build a Next.js Blog using Markdown',
-    github: 'blog-starter'
+    github: 'blog-starter',
+    mainContentStart: '# Notes'
   },
   'blog-headless-cms/contentful': {
     sidebarLabel: 'Contentful',
     title: 'Build a Next.js Blog with Contentful',
     github: 'cms-contentful',
-    markdownAfter: '## Configuration',
+    mainContentStart: '## Configuration',
     demoUrl: 'https://next-blog-contentful.now.sh/',
     description:
       'This example showcases Next.js’s Static Generation feature using Contentful as the data source.'
@@ -46,25 +47,25 @@ const examplesData: {
     sidebarLabel: 'DatoCMS',
     title: 'Build a Next.js Blog with DatoCMS',
     github: 'cms-datocms',
-    markdownAfter: '## Configuration'
+    mainContentStart: '## Configuration'
   },
   'blog-headless-cms/prismic': {
     sidebarLabel: 'Prismic',
     title: 'Build a Next.js Blog with Prismic',
     github: 'cms-prismic',
-    markdownAfter: '## Configuration'
+    mainContentStart: '## Configuration'
   },
   'blog-headless-cms/sanity': {
     sidebarLabel: 'Sanity',
     title: 'Build a Next.js Blog with Sanity',
     github: 'cms-sanity',
-    markdownAfter: '## Configuration'
+    mainContentStart: '## Configuration'
   },
   'blog-headless-cms/takeshape': {
     sidebarLabel: 'TakeShape',
     title: 'Build a Next.js Blog with TakeShape',
     github: 'cms-takeshape',
-    markdownAfter: '## Configuration'
+    mainContentStart: '## Configuration'
   },
   'authentication/auth0': {
     sidebarLabel: 'Auth0',

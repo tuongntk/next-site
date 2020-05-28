@@ -222,9 +222,9 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
   }
   markdown = await getExampleMarkdown(data.github);
   content = matter(markdown).content;
-  if (data.markdownAfter && content.includes(data.markdownAfter)) {
+  if (data.mainContentStart && content.includes(data.mainContentStart)) {
     // eslint-disable-next-line prefer-destructuring
-    content = `${data.markdownAfter}${content.split(data.markdownAfter)[1]}`;
+    content = `${data.mainContentStart}${content.split(data.mainContentStart)[1]}`;
   }
   html = await markdownToHtml(content, { exampleName: data.github });
   const instructions = await markdownToHtml(instructionsMarkdown(data.github));
