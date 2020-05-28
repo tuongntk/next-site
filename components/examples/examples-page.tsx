@@ -44,59 +44,65 @@ function ExamplesPage({
   const relatedExamples = categoryPage ? null : getRelatedExamples(pageSlug);
   return (
     <DocsLayout>
-      <h1>{title}</h1>
-      {/* eslint-disable-next-line */}
-      {introHtml ? <div dangerouslySetInnerHTML={{ __html: introHtml }} /> : <p>{description}</p>}
-      {(demoUrl || sourceUrl) && (
-        <div className="buttons">
-          {demoUrl && (
-            <span className="demo-button">
-              <Button invert medium href={demoUrl} target="_blank" rel="noopener noreferrer">
-                View Demo
+      <div className="main">
+        <h1>{title}</h1>
+        {/* eslint-disable-next-line */}
+        {introHtml ? <div dangerouslySetInnerHTML={{ __html: introHtml }} /> : <p>{description}</p>}
+        {(demoUrl || sourceUrl) && (
+          <div className="buttons">
+            {demoUrl && (
+              <span className="demo-button">
+                <Button invert medium href={demoUrl} target="_blank" rel="noopener noreferrer">
+                  View Demo
+                </Button>
+              </span>
+            )}
+            {sourceUrl && (
+              <Button
+                invert
+                outline={!!demoUrl}
+                medium
+                href={sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Source
               </Button>
-            </span>
-          )}
-          {sourceUrl && (
-            <Button
-              invert
-              outline={!!demoUrl}
-              medium
-              href={sourceUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View Source
-            </Button>
-          )}
-        </div>
-      )}
-      {instructions && (
-        <>
-          <H2 id="create-a-project-locally">Create a Project Locally</H2>
-          {/* eslint-disable-next-line */}
-          <div dangerouslySetInnerHTML={{ __html: instructions }} />
-        </>
-      )}
-      {/* eslint-disable-next-line */}
-      <div dangerouslySetInnerHTML={{ __html: html }} />
-      {relatedExamples && relatedExamples.items.length > 0 && (
-        <>
-          <H2 id="related">Related {relatedExamples.categoryName} Examples</H2>
-          {relatedExamples.items.map(({ slug, sidebarLabel, description: itemDescription }) => (
-            <div key={sidebarLabel} className="card">
-              <Link href="/examples/[...slug]" as={`/examples/${slug}`}>
-                <a>
-                  <h4>{sidebarLabel}</h4>
-                  <small>{itemDescription}</small>
-                </a>
-              </Link>
-            </div>
-          ))}
-        </>
-      )}
+            )}
+          </div>
+        )}
+        {instructions && (
+          <>
+            <H2 id="create-a-project-locally">Create a Project Locally</H2>
+            {/* eslint-disable-next-line */}
+            <div dangerouslySetInnerHTML={{ __html: instructions }} />
+          </>
+        )}
+        {/* eslint-disable-next-line */}
+        <div dangerouslySetInnerHTML={{ __html: html }} />
+        {relatedExamples && relatedExamples.items.length > 0 && (
+          <>
+            <H2 id="related">Related {relatedExamples.categoryName} Examples</H2>
+            {relatedExamples.items.map(({ slug, sidebarLabel, description: itemDescription }) => (
+              <div key={sidebarLabel} className="card">
+                <Link href="/examples/[...slug]" as={`/examples/${slug}`}>
+                  <a>
+                    <h4>{sidebarLabel}</h4>
+                    <small>{itemDescription}</small>
+                  </a>
+                </Link>
+              </div>
+            ))}
+          </>
+        )}
+      </div>
       <hr />
       <FooterFeedback />
       <style jsx>{`
+        .main {
+          margin-bottom: 3.5rem;
+        }
+
         .buttons {
           margin-top: 2rem;
         }

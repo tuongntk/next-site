@@ -34,7 +34,9 @@ const examplesData: {
     title: 'Build a Next.js Blog using Markdown',
     github: 'blog-starter',
     introContentEnd: '## Demo',
-    mainContentStart: '# Notes'
+    mainContentStart: '# Notes',
+    demoUrl: 'https://next-blog-starter.now.sh/',
+    description: `This example showcases Next.js's Static Generation feature using markdown files as the data source.`
   },
   'blog-headless-cms/contentful': {
     sidebarLabel: 'Contentful',
@@ -51,33 +53,45 @@ const examplesData: {
     title: 'Build a Next.js Blog with DatoCMS',
     github: 'cms-datocms',
     introContentEnd: '## Demo',
-    mainContentStart: '## Configuration'
+    mainContentStart: '## Configuration',
+    demoUrl: 'https://next-blog-datocms.now.sh/',
+    description: `This example showcases Next.js's Static Generation feature using DatoCMS as the data source.`
   },
   'blog-headless-cms/prismic': {
     sidebarLabel: 'Prismic',
     title: 'Build a Next.js Blog with Prismic',
     github: 'cms-prismic',
     introContentEnd: '## Demo',
-    mainContentStart: '## Configuration'
+    mainContentStart: '## Configuration',
+    demoUrl: 'https://next-blog-prismic.now.sh/',
+    description: `This example showcases Next.js's Static Generation feature using Prismic as the data source.`
   },
   'blog-headless-cms/sanity': {
     sidebarLabel: 'Sanity',
     title: 'Build a Next.js Blog with Sanity',
     github: 'cms-sanity',
     introContentEnd: '## Demo',
-    mainContentStart: '## Configuration'
+    mainContentStart: '## Configuration',
+    demoUrl: 'https://next-blog-sanity.now.sh/',
+    description: `This example showcases Next.js's Static Generation feature using Sanity as the data source.`
   },
   'blog-headless-cms/takeshape': {
     sidebarLabel: 'TakeShape',
     title: 'Build a Next.js Blog with TakeShape',
     github: 'cms-takeshape',
     introContentEnd: '## Demo',
-    mainContentStart: '## Configuration'
+    mainContentStart: '## Configuration',
+    demoUrl: 'https://next-blog-takeshape.now.sh/',
+    description: `This example showcases Next.js's Static Generation feature using TakeShape as the data source.`
   },
   'authentication/auth0': {
     sidebarLabel: 'Auth0',
     title: 'Next.js Authentication with Auth0',
-    github: 'auth0'
+    github: 'auth0',
+    introContentEnd: '### Using',
+    mainContentStart: '## Configuring Auth0',
+    description:
+      'This example shows how you can use @auth0/nextjs-auth to easily add authentication support to your Next.js application.'
   },
   'databases-graphql/fauna': {
     sidebarLabel: 'Fauna',
