@@ -22,6 +22,10 @@ export const featuredCategories: CategoryItem[] = [
     routes: [
       {
         type: 'example',
+        slug: 'blog-headless-cms/blog-starter'
+      },
+      {
+        type: 'example',
         slug: 'blog-headless-cms/contentful'
       },
       {

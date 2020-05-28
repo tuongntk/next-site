@@ -28,6 +28,11 @@ export const categoriesData: {
 const examplesData: {
   [key: string]: ExamplesDataItem | undefined;
 } = {
+  'blog-headless-cms/blog-starter': {
+    sidebarLabel: 'Markdown Blog',
+    title: 'Build a Next.js Blog using Markdown',
+    github: 'blog-starter'
+  },
   'blog-headless-cms/contentful': {
     sidebarLabel: 'Contentful',
     title: 'Build a Next.js Blog with Contentful',
