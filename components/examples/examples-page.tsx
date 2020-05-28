@@ -43,7 +43,7 @@ function ExamplesPage({
   introHtml,
   showDemo
 }: Props) {
-  const relatedExamples = categoryPage ? null : getRelatedExamples(pageSlug);
+  const relatedExamples = getRelatedExamples(pageSlug);
   return (
     <DocsLayout>
       <div className="main">
@@ -105,7 +105,9 @@ function ExamplesPage({
         <div dangerouslySetInnerHTML={{ __html: html }} />
         {relatedExamples && relatedExamples.items.length > 0 && (
           <>
-            <H2 id="related">Related {relatedExamples.categoryName} Examples</H2>
+            <H2 id="related">
+              {!categoryPage && <>Related {relatedExamples.categoryName} </>}Examples
+            </H2>
             {relatedExamples.items.map(({ slug, sidebarLabel, description: itemDescription }) => (
               <div key={sidebarLabel} className="card">
                 <Link href="/examples/[...slug]" as={`/examples/${slug}`}>
