@@ -13,7 +13,7 @@ function isImage(e: unknown): e is Image {
 type Heading = Element & { tagName: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' };
 
 function isHeading(e: unknown): e is Heading {
-  return ['h2', 'h3', 'h4', 'h5', 'h6'].includes((e as Element).tagName);
+  return ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes((e as Element).tagName);
 }
 
 export default function rehypeExamples({ exampleName }: { exampleName?: string }) {
@@ -35,6 +35,11 @@ export default function rehypeExamples({ exampleName }: { exampleName?: string }
     if (!text) return;
 
     const id = slugger.slug(text);
+
+    console.log(node);
+    if (node.tagName === 'h1') {
+      node.tagName = 'h2';
+    }
 
     if (node.properties) {
       node.properties.className = 'heading';
