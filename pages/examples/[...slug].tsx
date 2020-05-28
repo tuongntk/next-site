@@ -114,8 +114,10 @@ type Props = {
   categoryPage: boolean;
   description: string | null;
   demoUrl: string | null;
+  sourceUrl: string | null;
   title: string;
   instructions: string | null;
+  introHtml: string | null;
 };
 
 const ExamplesSlug: React.FC<Props> = ({
@@ -127,7 +129,8 @@ const ExamplesSlug: React.FC<Props> = ({
   description,
   demoUrl,
   sourceUrl,
-  instructions
+  instructions,
+  introHtml
 }) => {
   const isMobile = useIsMobile();
   const titleTag = topPage ? title : `${title} | Next.js Examples`;
@@ -155,6 +158,7 @@ const ExamplesSlug: React.FC<Props> = ({
                 description={description}
                 categoryPage={categoryPage}
                 sourceUrl={sourceUrl}
+                introHtml={introHtml}
               />
             </div>
             <style jsx>{`
@@ -195,6 +199,7 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
   let markdown: string;
   let content: string;
   let html: string;
+  let introHtml: string | undefined;
   if (params.slug.includes('introduction')) {
     const topPage = params.slug[0] === 'introduction';
     const { title, description } = topPage ? introductionData : categoriesData[params.slug[0]];
@@ -212,7 +217,9 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
         title,
         description,
         demoUrl: null,
-        instructions: null
+        instructions: null,
+        sourceUrl: null,
+        introHtml: null
       }
     };
   }
@@ -222,6 +229,9 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
   }
   markdown = await getExampleMarkdown(data.github);
   content = matter(markdown).content;
+  if (data.introContentEnd && content.includes(data.introContentEnd)) {
+    introHtml = await markdownToHtml(content.split(data.introContentEnd)[0], { stripH1: true });
+  }
   if (data.mainContentStart && content.includes(data.mainContentStart)) {
     // eslint-disable-next-line prefer-destructuring
     content = `${data.mainContentStart}${content.split(data.mainContentStart)[1]}`;
@@ -239,7 +249,8 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
       title: data.title,
       topPage: false,
       categoryPage: false,
-      sourceUrl
+      sourceUrl,
+      introHtml: introHtml || null
     }
   };
 };

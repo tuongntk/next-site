@@ -15,6 +15,7 @@ type Props = {
   pageSlug: string;
   description: string | null;
   categoryPage: boolean;
+  introHtml: string | null;
 };
 
 function H2({ id, children }: { id: string; children: React.ReactNode }) {
@@ -37,15 +38,17 @@ function ExamplesPage({
   pageSlug,
   description,
   categoryPage,
-  sourceUrl
+  sourceUrl,
+  introHtml
 }: Props) {
   const relatedExamples = categoryPage ? null : getRelatedExamples(pageSlug);
   return (
     <DocsLayout>
       <h1>{title}</h1>
-      <p>{description}</p>
-      {demoUrl && sourceUrl && (
-        <p>
+      {/* eslint-disable-next-line */}
+      {introHtml ? <div dangerouslySetInnerHTML={{ __html: introHtml }} /> : <p>{description}</p>}
+      {(demoUrl || sourceUrl) && (
+        <div className="buttons">
           {demoUrl && (
             <span className="demo-button">
               <Button invert medium href={demoUrl} target="_blank" rel="noopener noreferrer">
@@ -56,7 +59,7 @@ function ExamplesPage({
           {sourceUrl && (
             <Button
               invert
-              outline
+              outline={!!demoUrl}
               medium
               href={sourceUrl}
               target="_blank"
@@ -65,7 +68,7 @@ function ExamplesPage({
               View Source
             </Button>
           )}
-        </p>
+        </div>
       )}
       {instructions && (
         <>
@@ -94,6 +97,10 @@ function ExamplesPage({
       <hr />
       <FooterFeedback />
       <style jsx>{`
+        .buttons {
+          margin-top: 2rem;
+        }
+
         .demo-button {
           margin-right: 1rem;
         }

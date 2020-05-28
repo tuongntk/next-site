@@ -5,6 +5,7 @@ export type ExamplesDataItem = {
   description?: string;
   mainContentStart?: string;
   demoUrl?: string;
+  introContentEnd?: string;
 };
 
 export const introductionData = {
@@ -32,12 +33,14 @@ const examplesData: {
     sidebarLabel: 'Markdown Blog',
     title: 'Build a Next.js Blog using Markdown',
     github: 'blog-starter',
+    introContentEnd: '## Demo',
     mainContentStart: '# Notes'
   },
   'blog-headless-cms/contentful': {
     sidebarLabel: 'Contentful',
     title: 'Build a Next.js Blog with Contentful',
     github: 'cms-contentful',
+    introContentEnd: '## Demo',
     mainContentStart: '## Configuration',
     demoUrl: 'https://next-blog-contentful.now.sh/',
     description:
@@ -47,24 +50,28 @@ const examplesData: {
     sidebarLabel: 'DatoCMS',
     title: 'Build a Next.js Blog with DatoCMS',
     github: 'cms-datocms',
+    introContentEnd: '## Demo',
     mainContentStart: '## Configuration'
   },
   'blog-headless-cms/prismic': {
     sidebarLabel: 'Prismic',
     title: 'Build a Next.js Blog with Prismic',
     github: 'cms-prismic',
+    introContentEnd: '## Demo',
     mainContentStart: '## Configuration'
   },
   'blog-headless-cms/sanity': {
     sidebarLabel: 'Sanity',
     title: 'Build a Next.js Blog with Sanity',
     github: 'cms-sanity',
+    introContentEnd: '## Demo',
     mainContentStart: '## Configuration'
   },
   'blog-headless-cms/takeshape': {
     sidebarLabel: 'TakeShape',
     title: 'Build a Next.js Blog with TakeShape',
     github: 'cms-takeshape',
+    introContentEnd: '## Demo',
     mainContentStart: '## Configuration'
   },
   'authentication/auth0': {
