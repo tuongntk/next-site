@@ -45,22 +45,26 @@ const examplesData: {
   'blog-headless-cms/datocms': {
     sidebarLabel: 'DatoCMS',
     title: 'Build a Next.js Blog with DatoCMS',
-    github: 'cms-datocms'
+    github: 'cms-datocms',
+    markdownAfter: '## Configuration'
   },
   'blog-headless-cms/prismic': {
     sidebarLabel: 'Prismic',
     title: 'Build a Next.js Blog with Prismic',
-    github: 'cms-prismic'
+    github: 'cms-prismic',
+    markdownAfter: '## Configuration'
   },
   'blog-headless-cms/sanity': {
     sidebarLabel: 'Sanity',
     title: 'Build a Next.js Blog with Sanity',
-    github: 'cms-sanity'
+    github: 'cms-sanity',
+    markdownAfter: '## Configuration'
   },
   'blog-headless-cms/takeshape': {
     sidebarLabel: 'TakeShape',
     title: 'Build a Next.js Blog with TakeShape',
-    github: 'cms-takeshape'
+    github: 'cms-takeshape',
+    markdownAfter: '## Configuration'
   },
   'authentication/auth0': {
     sidebarLabel: 'Auth0',

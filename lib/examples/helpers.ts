@@ -1,9 +1,10 @@
 import { readFile } from '@lib/fs-utils';
 import path from 'path';
 import sidebarData, { HeadingItem, ExampleItem, CategoryItem } from '@lib/examples/sidebarData';
+import { getRawFileFromRepo } from '@lib/github/raw';
 
 export async function getExampleMarkdown(exampleDirectoryName: string): Promise<string> {
-  return readFile(path.join(process.cwd(), `examples/${exampleDirectoryName}.md`), 'utf8');
+  return getRawFileFromRepo(`canary/examples/${exampleDirectoryName}/README.md`, '');
 }
 
 export async function getLocalMarkdown(fileName: string): Promise<string> {
