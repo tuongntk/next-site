@@ -43,15 +43,10 @@ function DocsPage({ route, html, prevRoute, nextRoute }) {
     return () => {
       listeners.forEach(cleanUpListener => cleanUpListener());
     };
-  }, [slug]);
+  }, [tag, slug]);
 
   return (
     <DocsLayout>
-      <Notification>
-        <strong>Note:</strong> You are viewing the new Next.js documentation. The old docs are still
-        available <a href="/docs/old">here</a>.
-      </Notification>
-
       {/* eslint-disable-next-line */}
       <div className="docs-content" dangerouslySetInnerHTML={{ __html: html }} />
 
