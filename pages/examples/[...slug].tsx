@@ -162,6 +162,7 @@ const ExamplesSlug: React.FC<Props> = ({
                 sourceUrl={sourceUrl}
                 introHtml={introHtml}
                 showDemo={showDemo}
+                topPage={topPage}
               />
             </div>
             <style jsx>{`

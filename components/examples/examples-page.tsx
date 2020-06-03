@@ -17,6 +17,7 @@ type Props = {
   categoryPage: boolean;
   introHtml: string | null;
   showDemo: boolean;
+  topPage: boolean;
 };
 
 function H2({ id, children }: { id: string; children: React.ReactNode }) {
@@ -41,7 +42,8 @@ function ExamplesPage({
   categoryPage,
   sourceUrl,
   introHtml,
-  showDemo
+  showDemo,
+  topPage
 }: Props) {
   const relatedExamples = getRelatedExamples(pageSlug);
   return (
@@ -49,7 +51,13 @@ function ExamplesPage({
       <div className="main">
         <h1>{title}</h1>
         {/* eslint-disable-next-line */}
-        {introHtml ? <div dangerouslySetInnerHTML={{ __html: introHtml }} /> : <p>{description}</p>}
+        {!categoryPage &&
+          !topPage &&
+          (!introHtml ? (
+            <div dangerouslySetInnerHTML={{ __html: introHtml }} />
+          ) : (
+            <p>{description}</p>
+          ))}
         {(demoUrl || sourceUrl) && (
           <div className="buttons">
             {demoUrl && (
