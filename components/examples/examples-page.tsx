@@ -50,10 +50,10 @@ function ExamplesPage({
     <DocsLayout>
       <div className="main">
         <h1>{title}</h1>
-        {/* eslint-disable-next-line */}
         {!categoryPage &&
           !topPage &&
-          (!introHtml ? (
+          (introHtml ? (
+            // eslint-disable-next-line
             <div dangerouslySetInnerHTML={{ __html: introHtml }} />
           ) : (
             <p>{description}</p>
