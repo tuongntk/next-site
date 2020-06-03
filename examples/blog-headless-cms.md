@@ -1,4 +1,4 @@
-Next.js is great for building **content-oriented websites** such as blogs or marketing/sales websites.
+Next.js is great for building **content-oriented websites** such as blogs or marketing/sales websites. You can store the content [inside the repository](#store-content-as-code) or [externally in a headless CMS](#use-headless-cms).
 
 ### Store Content as Code
 
