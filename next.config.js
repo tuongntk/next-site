@@ -121,10 +121,6 @@ const nextConfig = {
           destination: '/_next/static/feed.xml'
         },
         {
-          source: '/docs{/}?',
-          destination: '/docs/getting-started'
-        },
-        {
           source: '/docs/tag/:tag{/}?',
           destination: '/docs/tag/:tag/getting-started'
         }
@@ -141,6 +137,11 @@ const nextConfig = {
           source: '/examples{/}?',
           permanent: true,
           destination: '/examples/introduction'
+        },
+        {
+          source: '/docs{/}?',
+          permanent: false,
+          destination: '/docs/getting-started'
         },
         ...navigateBetweenPagesLessonsRedirect,
         ...apiRoutesLessonsRedirect,
