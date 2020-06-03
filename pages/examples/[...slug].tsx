@@ -180,7 +180,7 @@ const ExamplesSlug: React.FC<Props> = ({
           <SocialMeta
             title={title}
             url={`https://nextjs.org/examples/${pageSlug}`}
-            image="/static/twitter-cards/documentation.png"
+            image="/static/twitter-cards/examples.png"
             description={description}
           />
         </PageContent>
