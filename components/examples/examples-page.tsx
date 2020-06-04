@@ -114,7 +114,8 @@ function ExamplesPage({
         {relatedExamples && relatedExamples.items.length > 0 && (
           <>
             <H2 id="related">
-              {!categoryPage && <>Related {relatedExamples.categoryName} </>}Examples
+              {!categoryPage && <>Related </>}
+              {relatedExamples.categoryName} Examples
             </H2>
             {relatedExamples.items.map(({ slug, sidebarLabel, description: itemDescription }) => (
               <div key={sidebarLabel} className="card">
