@@ -5,6 +5,8 @@ import DocsLayout from '@components/docs/docs-layout';
 import { PermalinkIcon } from '@components/docs/heading';
 import Link from 'next/link';
 import { getRelatedExamples } from '@lib/examples/getRelatedExamples';
+import { featuredCategories } from '@lib/examples/sidebarData';
+import { categoriesData } from '@lib/examples/examplesData';
 
 type Props = {
   title: string;
@@ -111,6 +113,21 @@ function ExamplesPage({
         )}
         {/* eslint-disable-next-line */}
         <div dangerouslySetInnerHTML={{ __html: html }} />
+        {topPage && (
+          <>
+            <H2 id="categories">Featured Categories</H2>
+            {featuredCategories.map(({ prefix }) => (
+              <div key={prefix} className="card">
+                <Link href="/examples/[...slug]" as={`/examples/${prefix}/introduction`}>
+                  <a>
+                    <h4>{categoriesData[prefix].title}</h4>
+                    <small>{categoriesData[prefix].description}</small>
+                  </a>
+                </Link>
+              </div>
+            ))}
+          </>
+        )}
         {relatedExamples && relatedExamples.items.length > 0 && (
           <>
             <H2 id="related">

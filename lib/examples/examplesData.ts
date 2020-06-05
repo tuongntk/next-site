@@ -11,7 +11,7 @@ export type ExamplesDataItem = {
 
 export const introductionData = {
   title: 'Next.js Examples',
-  description: 'TODO'
+  description: 'Description TODO'
 };
 
 export const categoriesData: {
@@ -20,11 +20,11 @@ export const categoriesData: {
     description: string;
   };
 } = {
-  'blog-headless-cms': { title: 'Blog & Headless CMS', description: 'TODO' },
-  authentication: { title: 'Authentication', description: 'TODO' },
-  'databases-graphql': { title: 'Databases & GraphQL', description: 'TODO' },
-  'images-videos': { title: 'Images & Videos', description: 'TODO' },
-  amp: { title: 'Amp', description: 'TODO' }
+  'blog-headless-cms': { title: 'Blog & Headless CMS', description: 'Description TODO' },
+  authentication: { title: 'Authentication', description: 'Description TODO' },
+  'databases-graphql': { title: 'Databases & GraphQL', description: 'Description TODO' },
+  'images-videos': { title: 'Images & Videos', description: 'Description TODO' },
+  amp: { title: 'Amp', description: 'Description TODO' }
 };
 
 const examplesData: {
