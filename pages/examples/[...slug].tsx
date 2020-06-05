@@ -50,12 +50,25 @@ function SidebarRoutes({
                   }}
                 />
               )}
-              <SidebarRoutes
-                pageSlug={pageSlug}
-                isMobile={isMobile}
-                routes={sidebarItem.routes}
-                level={level + 1}
-              />
+              {sidebarItem.hasLinkToGitHub && (
+                <Post
+                  isMobile={isMobile}
+                  level={level}
+                  route={{
+                    href: 'https://github.com/vercel/next.js/tree/canary/examples',
+                    external: true,
+                    title: 'View on GitHub'
+                  }}
+                />
+              )}
+              {sidebarItem.routes && (
+                <SidebarRoutes
+                  pageSlug={pageSlug}
+                  isMobile={isMobile}
+                  routes={sidebarItem.routes}
+                  level={level + 1}
+                />
+              )}
             </Heading>
           );
         }
@@ -68,7 +81,7 @@ function SidebarRoutes({
               level={level}
               title={categoriesData[sidebarItem.prefix].title}
               selected={selected}
-              opened={selected}
+              opened={sidebarItem.open || selected}
             >
               {sidebarItem.hasIntroduction && (
                 <Post
@@ -119,9 +132,10 @@ type Props = {
   instructions: string | null;
   introHtml: string | null;
   showDemo: boolean;
+  ogImage: string;
 };
 
-const ExamplesSlug: React.FC<Props> = ({
+const ExamplesSlug = ({
   pageSlug,
   html,
   title,
@@ -132,8 +146,9 @@ const ExamplesSlug: React.FC<Props> = ({
   sourceUrl,
   instructions,
   introHtml,
-  showDemo
-}) => {
+  showDemo,
+  ogImage
+}: Props): JSX.Element => {
   const isMobile = useIsMobile();
   const titleTag = topPage ? title : `${title} | Next.js Examples`;
 
@@ -180,7 +195,7 @@ const ExamplesSlug: React.FC<Props> = ({
           <SocialMeta
             title={title}
             url={`https://nextjs.org/examples/${pageSlug}`}
-            image="/static/twitter-cards/examples.png"
+            image={ogImage}
             description={description}
           />
         </PageContent>
@@ -224,7 +239,10 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
         instructions: null,
         sourceUrl: null,
         introHtml: null,
-        showDemo: false
+        showDemo: false,
+        ogImage: `https://og-image.now.sh/${
+          topPage ? '**Examples**' : encodeURI(`**${title}** Examples`)
+        }.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`
       }
     };
   }
@@ -256,7 +274,8 @@ export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = async (
       categoryPage: false,
       sourceUrl,
       introHtml: introHtml || null,
-      showDemo: data.showDemo || false
+      showDemo: data.showDemo || false,
+      ogImage: data.ogImage
     }
   };
 };

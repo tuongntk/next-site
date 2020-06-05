@@ -2,7 +2,8 @@ export type HeadingItem = {
   type: 'heading';
   title: string;
   hasIntroduction?: boolean;
-  routes: (ExampleItem | CategoryItem)[];
+  hasLinkToGitHub?: boolean;
+  routes?: CategoryItem[];
 };
 
 export type CategoryItem = {
@@ -10,6 +11,7 @@ export type CategoryItem = {
   prefix: string;
   hasIntroduction?: boolean;
   routes: ExampleItem[];
+  open?: boolean;
 };
 
 export type ExampleItem = { type: 'example'; slug: string };
@@ -19,6 +21,7 @@ export const featuredCategories: CategoryItem[] = [
     type: 'category',
     prefix: 'blog-headless-cms',
     hasIntroduction: true,
+    open: true,
     routes: [
       {
         type: 'example',
@@ -62,145 +65,21 @@ export const featuredCategories: CategoryItem[] = [
         slug: 'blog-headless-cms/takeshape'
       }
     ]
-  },
-  {
-    type: 'category',
-    prefix: 'authentication',
-    hasIntroduction: true,
-    routes: [
-      {
-        type: 'example',
-        slug: 'authentication/auth0'
-      }
-    ]
-  },
-  // {
-  //   type: 'category',
-  //   prefix: 'databases-graphql',
-  //   hasIntroduction: true,
-  //   routes: [
-  //     {
-  //       type: 'example',
-  //       slug: 'databases-graphql/fauna'
-  //     }
-  //   ]
-  // },
-  {
-    type: 'category',
-    prefix: 'images-videos',
-    hasIntroduction: true,
-    routes: [
-      {
-        type: 'example',
-        slug: 'images-videos/mux'
-      }
-    ]
   }
-  // {
-  //   title: 'Emails',
-  //   hasIntroduction: true,
-  //   routes: [
-  //     {
-  //       title: '?',
-  //       slug: '?'
-  //     }
-  //   ]
-  // },
-  // {
-  //   title: 'API Routes and Middleware',
-  //   hasIntroduction: true,
-  //   routes: [
-  //     {
-  //       title: '?',
-  //       slug: '?'
-  //     }
-  //   ]
-  // },
-  // {
-  //   title: 'Realtime',
-  //   hasIntroduction: true,
-  //   routes: [
-  //     {
-  //       title: '?',
-  //       slug: '?'
-  //     }
-  //   ]
-  // },
-  // {
-  //   title: 'Caching',
-  //   hasIntroduction: true,
-  //   routes: [
-  //     {
-  //       titlle: '?',
-  //       slug: '?'
-  //     }
-  //   ]
-  // },
-  // {
-  //   title: 'CSS and Styling',
-  //   hasIntroduction: true,
-  //   routes: [
-  //     {
-  //       title: '?',
-  //       slug: '?'
-  //     }
-  //   ]
-  // }
 ];
 
 const sidebarData: HeadingItem[] = [
   {
     type: 'heading',
-    title: 'Featured Examples',
+    title: 'Featured Categories',
     hasIntroduction: true,
     routes: featuredCategories
+  },
+  {
+    type: 'heading',
+    title: 'More Examples',
+    hasLinkToGitHub: true
   }
-  // {
-  //   title: 'More Examples',
-  //   type: 'heading',
-  //   routes: [
-  //     {
-  //       type: 'category',
-  //       prefix: 'amp',
-  //       routes: [
-  //         {
-  //           type: 'example',
-  //           slug: 'amp/amp-story'
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // }
-  //   routes: [
-  //     {
-  //       title: 'Routing',
-  //       routes: [
-  //         {
-  //           title: '?',
-  //           slug: '?'
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       title: 'Amp',
-  //       routes: [
-  //         {
-  //           title: '?',
-  //           slug: '?'
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       title: 'Configuration and Plugins',
-  //       routes: [
-  //         {
-  //           title: '?',
-  //           slug: '?'
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // }
 ];
 
 export default sidebarData;

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
 
-function NavLink({ route: { href, pathname, title, selected } }) {
+function NavLink({ route: { external, href, pathname, title, selected } }) {
   const router = useRouter();
   const onlyHashChange = pathname === router.pathname;
 
@@ -12,6 +12,10 @@ function NavLink({ route: { href, pathname, title, selected } }) {
         // NOTE: use just anchor element for triggering `hashchange` event
         onlyHashChange ? (
           <a className={selected ? 'selected' : ''} href={pathname}>
+            {title}
+          </a>
+        ) : external ? (
+          <a href={href} target="_blank" rel="noopener noreferrer">
             {title}
           </a>
         ) : (

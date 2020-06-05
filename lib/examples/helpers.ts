@@ -33,7 +33,9 @@ function getAllPaths(items: (HeadingItem | ExampleItem | CategoryItem)[]): strin
       if (item.hasIntroduction) {
         result.push(`/examples/introduction`);
       }
-      result.push(...getAllPaths(item.routes));
+      if (item.routes) {
+        result.push(...getAllPaths(item.routes));
+      }
     }
   });
   return result;

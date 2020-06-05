@@ -126,6 +126,18 @@ function ExamplesPage({
                 </Link>
               </div>
             ))}
+            <H2 id="categories">More Examples</H2>
+            <p>
+              You can view all 200+ examples on{' '}
+              <a
+                href="https://github.com/vercel/next.js/tree/canary/examples"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                our GitHub repository
+              </a>
+              .
+            </p>
           </>
         )}
         {relatedExamples && relatedExamples.items.length > 0 && (
