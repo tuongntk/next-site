@@ -26,6 +26,15 @@ export const featuredCategories: CategoryItem[] = [
       },
       {
         type: 'example',
+        slug: 'blog-headless-cms/wordpress'
+      },
+      // Headless CMS platforms, sorted alphabetically
+      {
+        type: 'example',
+        slug: 'blog-headless-cms/agility-cms'
+      },
+      {
+        type: 'example',
         slug: 'blog-headless-cms/contentful'
       },
       {
@@ -39,6 +48,10 @@ export const featuredCategories: CategoryItem[] = [
       {
         type: 'example',
         slug: 'blog-headless-cms/sanity'
+      },
+      {
+        type: 'example',
+        slug: 'blog-headless-cms/strapi'
       },
       {
         type: 'example',

@@ -39,6 +39,27 @@ const examplesData: {
     demoUrl: 'https://next-blog-starter.now.sh/',
     description: `This example showcases Next.js's Static Generation feature using markdown files as the data source.`
   },
+  'blog-headless-cms/wordpress': {
+    sidebarLabel: 'Wordpress',
+    title: 'Build a Next.js Blog with Wordpress',
+    github: 'cms-wordpress',
+    introContentEnd: '## Demo',
+    mainContentStart: '## Configuration',
+    demoUrl: 'https://next-blog-wordpress.now.sh/',
+    description:
+      'This example showcases Next.js’s Static Generation feature using Wordpress as the data source.'
+  },
+  'blog-headless-cms/agility-cms': {
+    sidebarLabel: 'Agility CMS',
+    title: 'Build a Next.js Blog with Agility CMS',
+    github: 'cms-agilitycms',
+    introContentEnd: '## Demo',
+    mainContentStart: '## Configuration',
+    // TODO: Preview Mode URL is different - see README
+    demoUrl: 'https://next-blog-agilitycms.now.sh/',
+    description:
+      'This example showcases Next.js’s Static Generation feature using Agility CMS as the data source.'
+  },
   'blog-headless-cms/contentful': {
     sidebarLabel: 'Contentful',
     title: 'Build a Next.js Blog with Contentful',
@@ -75,6 +96,16 @@ const examplesData: {
     mainContentStart: '## Configuration',
     demoUrl: 'https://next-blog-sanity.now.sh/',
     description: `This example showcases Next.js's Static Generation feature using Sanity as the data source.`
+  },
+  'blog-headless-cms/strapi': {
+    sidebarLabel: 'Strapi',
+    title: 'Build a Next.js Blog with Strapi',
+    github: 'cms-strapi',
+    introContentEnd: '## Demo',
+    mainContentStart: '## Configuration',
+    demoUrl: 'https://next-blog-strapi.now.sh/',
+    description:
+      'This example showcases Next.js’s Static Generation feature using Strapi as the data source.'
   },
   'blog-headless-cms/takeshape': {
     sidebarLabel: 'TakeShape',
