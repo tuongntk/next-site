@@ -22,12 +22,4 @@ Alternatively, you might want to consider using a **Headless CMS** platform. Put
 - **Better Developer Experience**: Headless CMS platforms are API-first products, they tend to offer high quality developer experience (DX).
 - **Multiple Frontends**: You can easily query the stored content from different frontends you may have (e.g. your web app and a native mobile app).
 
-We have example starter code for popular headless CMS platforms — [you can check them out below](#related).
-
-#### Static Generation
-
-TODO
-
-#### Preview Mode
-
-TODO
+We have example starter code for popular headless CMS platforms — [you can check them out below](#related). Before going through them, we recommend you to read our documentation on [data fetching](/docs/basic-features/data-fetching) and [preview mode](/docs/advanced-features/preview-mode).
