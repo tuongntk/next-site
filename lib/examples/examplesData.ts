@@ -70,6 +70,16 @@ const examplesData: {
     description:
       'This example showcases Next.js’s Static Generation feature using Contentful as the data source.'
   },
+  'blog-headless-cms/cosmic': {
+    sidebarLabel: 'Cosmic',
+    title: 'Build a Next.js Blog with Cosmic',
+    github: 'cms-cosmic',
+    introContentEnd: '## Demo',
+    mainContentStart: '## Configuration',
+    demoUrl: 'https://next-blog-cosmic.now.sh/',
+    description:
+      'This example showcases Next.js’s Static Generation feature using Cosmic as the data source.'
+  },
   'blog-headless-cms/datocms': {
     sidebarLabel: 'DatoCMS',
     title: 'Build a Next.js Blog with DatoCMS',

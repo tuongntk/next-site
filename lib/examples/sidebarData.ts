@@ -39,6 +39,10 @@ export const featuredCategories: CategoryItem[] = [
       },
       {
         type: 'example',
+        slug: 'blog-headless-cms/cosmic'
+      },
+      {
+        type: 'example',
         slug: 'blog-headless-cms/datocms'
       },
       {
