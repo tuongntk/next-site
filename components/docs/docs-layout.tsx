@@ -1,4 +1,4 @@
-export default function DocsLayout({ children }) {
+export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="docs">
       {children}

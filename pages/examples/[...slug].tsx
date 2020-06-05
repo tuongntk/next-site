@@ -148,7 +148,7 @@ const ExamplesSlug = ({
   introHtml,
   showDemo,
   ogImage
-}: Props): JSX.Element => {
+}: Props) => {
   const isMobile = useIsMobile();
   const titleTag = topPage ? title : `${title} | Next.js Examples`;
 
