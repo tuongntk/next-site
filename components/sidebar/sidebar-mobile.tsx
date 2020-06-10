@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/router';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import cn from 'classnames';
 import Container from '../container';
@@ -44,9 +45,14 @@ export default function SidebarMobile({
       enableBodyScroll(searchRef.current);
     }
   };
-  const onRouteChange = () => {
+  const onRouteChange = useCallback(() => {
     closeMenu();
-  };
+  }, []);
+  const router = useRouter();
+
+  useEffect(() => {
+    onRouteChange();
+  }, [router.asPath, onRouteChange]);
 
   return (
     <Container>

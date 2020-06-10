@@ -62,7 +62,6 @@ function AutoComplete({
 
   useEffect(() => {
     if (isMobile) {
-      if (onRouteChange) onRouteChange();
       if (inputValue) {
         setValue('');
         refine();
