@@ -22,12 +22,12 @@ export default function SidebarMobile({
     }
     setOpen(true);
   };
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     if (menuRef.current) {
       enableBodyScroll(menuRef.current);
     }
     setOpen(false);
-  };
+  }, []); // setState and useRef values are static, no need to be on deps
   const toggleOpen = () => {
     if (opened) closeMenu();
     else openMenu();
@@ -47,7 +47,7 @@ export default function SidebarMobile({
   };
   const onRouteChange = useCallback(() => {
     closeMenu();
-  }, []);
+  }, [closeMenu]);
   const router = useRouter();
 
   useEffect(() => {
