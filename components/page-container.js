@@ -24,19 +24,12 @@ export default function PageContainer({ title, description, children }) {
       <style jsx global>
         {`
           body {
-            position: relative;
-            min-height: 100%;
-            margin: 0;
             line-height: 1.65;
             font-family: ${FONT_FAMILY_SANS};
             font-size: 16px;
             font-weight: 400;
             min-width: 320px;
             direction: ltr;
-            font-feature-settings: 'kern';
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
             scroll-behavior: smooth;
           }
           [role='grid']:focus {
