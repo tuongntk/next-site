@@ -34,6 +34,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--geist-background);
   color: var(--geist-foreground);
+  scroll-padding-top: var(--header-height);
 }
 
 svg {
@@ -125,6 +126,11 @@ svg line {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   --font-mono: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
+
+  /* Header */
+  --header-height: 64px;
+  --header-border-bottom: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+  --header-background: rgba(255, 255, 255, 0.8);
 
   /* Form sizing */
   --geist-form-large-font: 1rem;
