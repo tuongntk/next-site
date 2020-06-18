@@ -1,0 +1,305 @@
+/* Helper classes */
+a.geist-reset {
+  text-decoration: none;
+  color: inherit;
+}
+
+button.geist-reset {
+  border: unset;
+  background: unset;
+  padding: unset;
+  font: unset;
+  text-align: unset;
+}
+
+hr.geist-hr-reset {
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid var(--accents-2);
+  margin-top: -1px;
+}
+
+.geist-no-outline {
+  outline: none;
+}
+
+.geist-no-events {
+  pointer-events: none;
+}
+
+.geist-flex {
+  display: flex;
+}
+
+.offset:before {
+  display: block;
+  content: ' ';
+  height: 75px;
+  margin-top: -75px;
+  visibility: hidden;
+}
+
+.geist-visually-hidden {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  top: -1000px;
+  left: -1000px;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  visibility: hidden;
+}
+
+.geist-ellipsis {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  max-width: 100%;
+}
+
+.geist-text-no-margin > *:first-child {
+  margin-top: 0;
+}
+
+.geist-text-no-margin > *:last-child {
+  margin-bottom: 0;
+}
+
+.geist-overflow-scroll {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.geist-overflow-scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.geist-overflow-scroll-y {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.geist-inline-center {
+  display: inline-flex;
+  align-items: center;
+}
+
+.geist-spacer {
+  display: block;
+  width: 1px;
+  height: 1px;
+  margin-left: calc(16pt - 1px);
+  margin-top: calc(16pt - 1px);
+}
+.geist-spacer.inline {
+  display: inline-block;
+  margin-top: 0;
+}
+.geist-spacer.padding {
+  margin: 0 !important;
+}
+
+.geist-hover-dim {
+  transition: opacity 0.15s ease;
+}
+
+.geist-hover-dim:hover,
+.geist-hover-dim:focus,
+.geist-hover-dim:active {
+  opacity: 0.7;
+}
+
+.geist-dotted {
+  background-image: radial-gradient(var(--accents-2) 1px, transparent 1px),
+    radial-gradient(var(--accents-2) 1px, transparent 1px);
+  background-position: 0 0, 25px 25px;
+  background-size: 50px 50px;
+}
+
+/* Shadow that has hover effect on dark theme too */
+.geist-shadow {
+  box-shadow: var(--shadow-small);
+  transition: box-shadow 0.2s ease;
+}
+
+.geist-shadow:hover,
+.geist-shadow:focus-within {
+  box-shadow: var(--shadow-hover);
+}
+
+a.geist-secondary-link {
+  line-height: normal;
+  padding-bottom: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--accents-3) 0%,
+    var(--accents-3) 50%,
+    transparent 50%,
+    transparent 100%
+  );
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  background-size: 1ch 1px;
+  transition: color 0.15s ease;
+}
+
+a.geist-secondary-link:hover {
+  color: var(--accents-4);
+}
+
+.geist-dim-link {
+  color: var(--accents-5) !important;
+  transition: color 0.15s ease;
+}
+
+.geist-dim-link:hover,
+.geist-dim-link:focus,
+.geist-dim-link:active {
+  color: var(--geist-foreground) !important;
+}
+
+.geist-no-scrollbar {
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.geist-no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Clamp to a single line */
+.geist-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+/* Tabular Numbers */
+
+.geist-tabular-nums {
+  font-feature-settings: 'tnum';
+}
+
+/* Media Queries */
+@media screen and (min-width: 601px) {
+  .geist-show-on-mobile {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .geist-center-on-mobile {
+    text-align: center;
+  }
+  .geist-hide-on-mobile {
+    display: none !important;
+  }
+  .geist-overflow-reset-mobile {
+    overflow: initial !important;
+    -webkit-overflow-scrolling: initial !important;
+  }
+}
+
+@media screen and (min-width: 961px) {
+  .geist-show-on-tablet {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .geist-hide-on-tablet {
+    display: none !important;
+  }
+}
+
+.geist-card-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* debugging */
+.debug .geist-container {
+  outline: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+/* Transitions */
+.placeholder-fade-in-enter {
+  opacity: 0.01;
+}
+.placeholder-fade-in-enter.placeholder-fade-in-enter-active {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+.placeholder-fade-in-leave {
+  opacity: 1;
+}
+.placeholder-fade-in-leave.placeholder-fade-in-leave-active {
+  opacity: 0.01;
+  transition: opacity 0.2s ease;
+}
+
+/* Animations */
+.geist-fade-in {
+  animation: soft-fade-in 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+}
+@keyframes soft-fade-in {
+  from {
+    /* Don't begin with 0, it gives a feeling of flickering. */
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.geist-disabled {
+  --geist-foreground: var(--accents-6);
+  --accents-8: var(--accents-5);
+  --accents-7: var(--accents-5);
+  --accents-6: var(--accents-4);
+  --accents-5: var(--accents-4);
+  --accents-4: var(--accents-3);
+
+  --geist-link-color: var(--geist-foreground);
+
+  --geist-success-light: var(--accents-3);
+  --geist-success: var(--geist-foreground);
+  --geist-success-dark: var(--geist-foreground);
+
+  --geist-error-light: var(--accents-3);
+  --geist-error: var(--geist-foreground);
+  --geist-error-dark: var(--geist-foreground);
+
+  --geist-warning-light: var(--accents-3);
+  --geist-warning: var(--geist-foreground);
+  --geist-warning-dark: var(--geist-foreground);
+
+  --geist-secondary-light: var(--accents-3);
+  --geist-secondary: var(--geist-foreground);
+  --geist-secondary-dark: var(--geist-foreground);
+
+  --geist-code: var(--geist-foreground);
+}
+
+.geist-disabled .geist-disabled-wall {
+  cursor: not-allowed;
+  user-select: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Bypass `.geist-disabled-wall` */
+.geist-disabled .geist-disabled-skip {
+  z-index: 2;
+}
+
+.geist-disabled svg,
+.geist-disabled img {
+  filter: grayscale(1);
+}
