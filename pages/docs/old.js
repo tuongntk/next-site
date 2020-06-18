@@ -20,7 +20,3 @@ export default () => (
     </Container>
   </PageContainer>
 );
-
-export const config = {
-  amp: true
-};

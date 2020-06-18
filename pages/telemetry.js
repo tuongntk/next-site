@@ -17,7 +17,3 @@ export default () => (
     <Footer />
   </Page>
 );
-
-export const config = {
-  amp: true
-};

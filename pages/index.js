@@ -41,7 +41,3 @@ export default () => {
     </Page>
   );
 };
-
-export const config = {
-  amp: 'hybrid'
-};
