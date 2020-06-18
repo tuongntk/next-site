@@ -23,22 +23,6 @@ export default function PageContainer({ title, description, children }) {
       {children}
       <style jsx global>
         {`
-          html {
-            line-height: 1.15;
-            -webkit-text-size-adjust: 100%;
-            height: 100%;
-            box-sizing: border-box;
-            touch-action: manipulation;
-            font-feature-settings: 'case' 1, 'rlig' 1, 'calt' 0;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-          }
-          *,
-          *:before,
-          *:after {
-            box-sizing: inherit;
-          }
           body {
             position: relative;
             min-height: 100%;
@@ -55,20 +39,8 @@ export default function PageContainer({ title, description, children }) {
             -moz-osx-font-smoothing: grayscale;
             scroll-behavior: smooth;
           }
-          html,
-          body {
-            background-color: #fff;
-            color: #111;
-          }
-          ::selection {
-            background-color: #0070f3;
-            color: #fff;
-          }
           [role='grid']:focus {
             outline: none;
-          }
-          svg {
-            text-rendering: optimizeLegibility;
           }
           h1,
           h2,
@@ -345,15 +317,6 @@ export default function PageContainer({ title, description, children }) {
 
           .token.italic {
             font-style: italic;
-          }
-
-          svg {
-            shape-rendering: crispEdges;
-          }
-
-          svg path,
-          svg circle {
-            shape-rendering: geometricprecision;
           }
           [data-reach-skip-link] {
             border: 0;
