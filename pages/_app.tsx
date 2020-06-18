@@ -4,6 +4,7 @@ import '../styles/font.css';
 import '../styles/index.css';
 import '../styles/utility.css';
 import '../styles/nprogress.css';
+import '../styles/next.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
