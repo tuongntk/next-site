@@ -5,7 +5,7 @@ import SocialMeta from '../../components/social-meta';
 
 export default function Conf() {
   return (
-    <Page title="Next.js Conf">
+    <Page title="Next.js Conf" hideHeader>
       <SocialMeta
         image="/static/twitter-cards/home.jpg"
         title={`Next.js by ${ORG_NAME} - The React Framework`}
